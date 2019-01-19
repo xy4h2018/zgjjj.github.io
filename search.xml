@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Luogu P1616 疯狂的采药 解题报告]]></title>
+    <url>%2F2019%2F01%2F19%2FLuogu%2F</url>
+    <content type="text"><![CDATA[题目链接:P1616 疯狂的采药题目分析：很明显的完全背包。 首先，我们先把这道题转化为标准完全背包： 各种草药 物品 草药的价值 物品的价值 草药的采摘时间 物品的质量 总采摘时间 背包容量 ok,那么这道题就变成了板子题。 我们先来设计状态： 设$$\text{dp[i]为背包容量为i时，能放下的物品的最大价值}$$ $$\text{t[j]与p[j]分别存储第j个物品的质量和价值}$$ 然后进行状态转移： 对于容量为k的背包，第m个物品，我们考虑： 如果放这件物品，那么k容量背包的价值为dp[k-t[m]]+p[m] 如果不放，那么k容量背包的价值仍为原始的dp[k] 根据数组dp的定义，我们可以得到状态转移方程: $$\text{dp[k]=max(dp[k-t[m]]+p[m],dp[k])}$$ 同时，我们需要考虑该物品放入背包的先决条件： $$\text{k-t[m]}\ge\text{0}$$ 考虑每一件物品，并且综合上面的条件,我们得到了代码：1234567for(int i=1;i&lt;=T;i++)&#123; dp[i]=0; //初始化，可通过将数组开在主函数外面省略这一步 for(int j=1;j&lt;=n;j++)&#123; if(i-t[j]&gt;=0) dp[i]=max(dp[i],dp[i-t[j]]+p[j]) &#125; &#125; 问题所求的便是dp[T]。 Source Code1234567891011121314151617181920#include&lt;cstdio&gt;#include&lt;algorithm&gt;using std::max;int main()&#123; int n,T; scanf("%d%d",&amp;T,&amp;n); int t[n+1],p[n+1],dp[T+1]; for(int i=1;i&lt;=n;i++)&#123; scanf("%d%d",&amp;t[i],&amp;p[i]); &#125; dp[0]=0; for(int i=1;i&lt;=T;i++)&#123; dp[i]=0; for(int j=1;j&lt;=n;j++)&#123; if(i-t[j]&gt;=0) dp[i]=max(dp[i],dp[i-t[j]]+p[j]) &#125; &#125; printf("%d",dp[T]); return 0;&#125;]]></content>
+      <tags>
+        <tag>解题报告</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[小闹钟]]></title>
     <url>%2F2019%2F01%2F19%2F%E5%B0%8F%E9%97%B9%E9%92%9F%2F</url>
     <content type="text"><![CDATA[简介你从来没有玩过的船新版本当前版本只支持倒计时(巨水 Source Code1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162#include&lt;cstdlib&gt;#include&lt;windows.h&gt;#include&lt;iostream&gt;using namespace std;int main()&#123; int hour,second,minute; cout&lt;&lt;"输入格式\"时 分 秒\""&lt;&lt;endl; cin&gt;&gt;hour&gt;&gt;minute&gt;&gt;second; if(minute==60&amp;&amp;second&gt;0) &#123; cout&lt;&lt;"Input error!"&lt;&lt;endl; &#125; else &#123; if(minute&gt;60||second&gt;60) cout&lt;&lt;"Input error!"&lt;&lt;endl; else &#123; for(int i=3600*hour+60*minute+second;i&gt;0;Sleep(1000),i--) &#123; system("cls"); if((minute)&lt;0) &#123; hour-=1; minute=60; &#125; if((second-1)&lt;0) &#123; minute-=1; second=60; &#125; if(second&lt;10&amp;&amp;minute&lt;10) &#123; second--; cout&lt;&lt;hour&lt;&lt;":0"&lt;&lt;minute&lt;&lt;":0"&lt;&lt;second&lt;&lt;endl; &#125; if(second&lt;10&amp;&amp;minute&gt;=10) &#123; second--; cout&lt;&lt;hour&lt;&lt;":"&lt;&lt;minute&lt;&lt;":0"&lt;&lt;second&lt;&lt;endl; &#125; if(second&gt;=10&amp;&amp;minute&lt;10) &#123; second--; cout&lt;&lt;hour&lt;&lt;":0"&lt;&lt;minute&lt;&lt;":"&lt;&lt;second&lt;&lt;endl; &#125; if(second&gt;=10&amp;&amp;minute&gt;=10) &#123; second--; cout&lt;&lt;hour&lt;&lt;":"&lt;&lt;minute&lt;&lt;":"&lt;&lt;second&lt;&lt;endl; &#125; &#125; for(int i=10;i&gt;0;i--) &#123; cout&lt;&lt;"\a"&lt;&lt;endl; Sleep(1000); &#125; &#125; &#125; return 0;&#125;]]></content>
