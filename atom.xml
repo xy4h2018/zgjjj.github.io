@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zgjjj.github.io/"/>
-  <updated>2019-02-10T08:35:30.678Z</updated>
+  <updated>2019-02-10T09:29:38.291Z</updated>
   <id>http://zgjjj.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HBTSC 2019 任务清单</title>
+    <link href="http://zgjjj.github.io/2019/02/10/HBSTC-2019-%E4%BB%BB%E5%8A%A1%E6%B8%85%E5%8D%95/"/>
+    <id>http://zgjjj.github.io/2019/02/10/HBSTC-2019-任务清单/</id>
+    <published>2019-02-10T09:01:49.000Z</published>
+    <updated>2019-02-10T09:29:38.291Z</updated>
+    
+    <content type="html"><![CDATA[<p><del>显而易见搞不完</del><br>&lt;! – more –&gt;</p><h1 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h1><ul><li>[] 数学</li><li><ul><li>[] 位运算（状压常用）</li></ul></li><li><ul><li>[] 数论</li></ul></li><li><ul><li><ul><li>[] 欧拉函数</li></ul></li></ul></li><li><ul><li><ul><li>[] 中国剩余定理</li></ul></li></ul></li><li><ul><li><ul><li>[] 逆元线性递推</li></ul></li></ul></li><li><ul><li><ul><li>[] 线性筛</li></ul></li></ul></li><li><ul><li><ul><li>[] 裴蜀定理</li></ul></li></ul></li><li><ul><li><ul><li>[] 基础BSGS</li></ul></li></ul></li><li><ul><li>[] 线代</li></ul></li><li><ul><li><ul><li>[] 矩阵求逆</li></ul></li></ul></li><li><ul><li><ul><li>[] 矩阵快速幂</li></ul></li></ul></li><li><ul><li>[] 组合</li></ul></li><li><ul><li><ul><li>[] Lucas定理</li></ul></li></ul></li><li><ul><li><ul><li>[] Catalan数</li></ul></li></ul></li><li><ul><li><ul><li>[] 斯特林数</li></ul></li></ul></li><li><ul><li><ul><li>[] 容斥</li></ul></li></ul></li><li><ul><li>博弈论</li></ul></li><li><ul><li><ul><li>[] Nim博弈</li></ul></li></ul></li><li>动态规划</li><li><ul><li>[] 记忆化搜索</li></ul></li><li><ul><li>[] 区间DP</li></ul></li><li><ul><li>[] 状压DP</li></ul></li><li><ul><li>[] 斜率优化</li></ul></li><li>搜索</li><li><ul><li>[] 双向BFS</li></ul></li><li><ul><li>[] 迭代加深搜索</li></ul></li><li>字符串</li><li><ul><li>[] Hash</li></ul></li><li><ul><li>[] KMP</li></ul></li><li>数据结构</li><li><ul><li>[] 单调栈</li></ul></li><li><ul><li>[] 单调队列</li></ul></li><li><ul><li>[] 树状数组(可能依然不会)</li></ul></li><li><ul><li>[] 带Lazy Tag的线段树</li></ul></li><li><ul><li>[] Treap</li></ul></li><li>[] 图论</li><li><ul><li>[] LCA</li></ul></li><li><ul><li>[] k短路</li></ul></li><li><ul><li>[] 强联通分量</li></ul></li><li><ul><li><ul><li>[] Tarjan</li></ul></li></ul></li><li><ul><li>[] 二分图最大匹配</li></ul></li><li><ul><li>[] 最小环（至少会一种求法吧？）</li></ul></li><li><ul><li>[] 网络流(有时间再开)</li></ul></li><li>[] 优化及玄学？</li><li><ul><li>[] 快读快写</li></ul></li><li><ul><li>[] 模拟退火</li></ul></li><li><ul><li>[] 离散化</li></ul></li><li><ul><li>[]离线（到底怎么搞啊）</li></ul></li></ul><h1 id="复习计划"><a href="#复习计划" class="headerlink" title="复习计划"></a>复习计划</h1><ul><li>[] 并查集</li><li>[] dfs</li><li>[] bfs</li><li>[] Dijkstra+Heap</li><li>[] SPFA(能不用就不用)</li><li>[] 手写qsort(用处不大?)</li><li>[] <del>打表</del></li><li>[] 二分板子</li><li>[] 三分（有时间再）</li><li>[] 二维前缀和&amp;差分</li><li>[] 线性DP（多写题）</li><li>[] <del>背包</del></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;del&gt;显而易见搞不完&lt;/del&gt;&lt;br&gt;&amp;lt;! – more –&amp;gt;&lt;/p&gt;
+&lt;h1 id=&quot;学习计划&quot;&gt;&lt;a href=&quot;#学习计划&quot; class=&quot;headerlink&quot; title=&quot;学习计划&quot;&gt;&lt;/a&gt;学习计划&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;[] 数学&lt;/l
+      
+    
+    </summary>
+    
+    
+      <category term="复习计划" scheme="http://zgjjj.github.io/tags/%E5%A4%8D%E4%B9%A0%E8%AE%A1%E5%88%92/"/>
+    
+      <category term="学习计划" scheme="http://zgjjj.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/"/>
+    
+  </entry>
   
   <entry>
     <title>2019寒假成都摸鱼记</title>
