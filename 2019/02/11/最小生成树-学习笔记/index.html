@@ -6,18 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://zgjjj.github.io">
-  <title>Archives: 2019/2 | zgjjj的博客</title>
+  <title>最小生成树 学习笔记 | zgjjj的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="zgjjj的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zgjjj的博客">
-<meta property="og:url" content="http://zgjjj.github.io/archives/2019/02/index.html">
+  <meta name="description" content="预备知识生成树概念给定一张无向图${G{(V,E)}}$中，${(u,v)}$代表连接顶点${u,v}$的边，${w(u,v)}$代表此边的权重，我们称它的一个无环子集${G’(V,E’)}$ （注意这里的${V}$与母集的${V}$一致） 为图${G}$的一个生成树。 求法一张图的生成树可以通过任意顶点dfs寻得。 这里是代码： 123456789101112131415161718192021">
+<meta name="keywords" content="MST,Kruskal">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最小生成树 学习笔记">
+<meta property="og:url" content="http://zgjjj.github.io/2019/02/11/最小生成树-学习笔记/index.html">
 <meta property="og:site_name" content="zgjjj的博客">
-<meta property="og:description" content="zgjjj的博客">
+<meta property="og:description" content="预备知识生成树概念给定一张无向图${G{(V,E)}}$中，${(u,v)}$代表连接顶点${u,v}$的边，${w(u,v)}$代表此边的权重，我们称它的一个无环子集${G’(V,E’)}$ （注意这里的${V}$与母集的${V}$一致） 为图${G}$的一个生成树。 求法一张图的生成树可以通过任意顶点dfs寻得。 这里是代码： 123456789101112131415161718192021">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/02/11/5c616e8093a23.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/11/5c616eb76c076.png">
+<meta property="og:updated_time" content="2019-02-11T13:26:52.283Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zgjjj的博客">
-<meta name="twitter:description" content="zgjjj的博客">
+<meta name="twitter:title" content="最小生成树 学习笔记">
+<meta name="twitter:description" content="预备知识生成树概念给定一张无向图${G{(V,E)}}$中，${(u,v)}$代表连接顶点${u,v}$的边，${w(u,v)}$代表此边的权重，我们称它的一个无环子集${G’(V,E’)}$ （注意这里的${V}$与母集的${V}$一致） 为图${G}$的一个生成树。 求法一张图的生成树可以通过任意顶点dfs寻得。 这里是代码： 123456789101112131415161718192021">
+<meta name="twitter:image" content="https://i.loli.net/2019/02/11/5c616e8093a23.png">
   
     <link rel="alternative" href="/atom.xml" title="zgjjj的博客" type="application/atom+xml">
   
@@ -163,36 +168,59 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-最小生成树-学习笔记" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/11/最小生成树-学习笔记/" class="archive-article-date">
-  	<time datetime="2019-02-11T10:46:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-11</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/11/最小生成树-学习笔记/">最小生成树 学习笔记</a>
+    <h1 class="article-title" itemprop="name">
+      最小生成树 学习笔记
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/02/11/最小生成树-学习笔记/" class="archive-article-date">
+  	<time datetime="2019-02-11T10:46:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h1><h2 id="生成树"><a href="#生成树" class="headerlink" title="生成树"></a>生成树</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>给定一张无向图${G{(V,E)}}$中，${(u,v)}$代表连接顶点${u,v}$的边，${w(u,v)}$代表此边的<strong>权重</strong>，我们称它的一个<strong>无环</strong>子集${G’(V,E’)}$ <strong>（注意这里的${V}$与母集的${V}$一致）</strong> 为图${G}$的一个生成树。</p>
+<h3 id="求法"><a href="#求法" class="headerlink" title="求法"></a>求法</h3><p>一张图的生成树可以通过任意顶点<strong>dfs</strong>寻得。</p>
+<p>这里是代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 10010</span></span><br><span class="line"><span class="keyword">int</span> <span class="built_in">map</span>[maxn][maxn];<span class="keyword">bool</span> vis[maxn];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,u,v,w;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	vis[x]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(x==i) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">if</span>(!vis[i]&amp;&amp;<span class="built_in">map</span>[i][x])&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d -&gt; %d : %d\n"</span>,x,i,<span class="built_in">map</span>[x][i]);</span><br><span class="line">			dfs(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;u,&amp;v,&amp;w);</span><br><span class="line">		<span class="built_in">map</span>[u][v]=w;</span><br><span class="line">		<span class="built_in">map</span>[v][u]=w;</span><br><span class="line">	&#125;</span><br><span class="line">	dfs(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a><strong>注意</strong>：</h3><p>如果给定的图中存在一个环${C(V,E’)}$，即包含所有的顶点，那么此图的dfs生成树将会<strong>退化</strong>为<strong>链</strong>。</p>
+<h4 id="典例："><a href="#典例：" class="headerlink" title="典例："></a>典例：<img src="https://i.loli.net/2019/02/11/5c616e8093a23.png" alt=""></h4><p>如果我们对此图求dfs生成树</p>
+<p>将会得到如下结果：<br><img src="https://i.loli.net/2019/02/11/5c616eb76c076.png" alt=""></p>
+<p><strong>### 另:</strong>自己在考场上发现的<del>（除了我都知道的）</del>知识：<br>对于树${T(V,E)},\forall P \in V$作为其根节点，都将得到一颗树${T’}$。</p>
+<h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><h3 id="又称"><a href="#又称" class="headerlink" title="又称"></a>又称</h3><p><strong>用于多种不相交集合的数据结构</strong></p>
+<h3 id="支持操作"><a href="#支持操作" class="headerlink" title="支持操作"></a>支持操作</h3><p>能够支持对于<strong>树</strong>的两种操作：</p>
+<ol>
+<li>查询一棵树的<strong>根节点</strong>；</li>
+<li><strong>合并</strong>两棵树；</li>
+</ol>
+<h3 id="朴素代码"><a href="#朴素代码" class="headerlink" title="朴素代码"></a>朴素代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 10010</span></span><br><span class="line"><span class="keyword">int</span> fa[maxn];<span class="comment">//维护父节点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;<span class="keyword">while</span>(n--)fa[n]=n;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> fa[x]==x?x:find(fa[x]);&#125;<span class="comment">//递归实现查询</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> xx=find(x);<span class="keyword">int</span> yy=find(y);</span><br><span class="line">    fa[xx]=yy;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><p>有<strong>路径压缩</strong>与<strong>按秩合并</strong>两种方法，这($zu\grave{o}​$)里($zh\check{e}​$)只($zh\check{i}​$)讲($hu\grave{i}​$)按秩合并：<br>思想：用<code>size[i]</code>维护以${i}​$为根节点的子树的大小，在合并时将小子树合并到大子树上。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 10010</span></span><br><span class="line"><span class="keyword">int</span> fa[maxn],size[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;<span class="keyword">while</span>(n--) fa[n]=n,size[n]=<span class="number">1</span>;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> fa[x]==x?x:find(fa[x]);&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> xx=find(x);<span class="keyword">int</span> yy=find(y);</span><br><span class="line">    <span class="keyword">if</span>(size[xx]&gt;size[yy]) <span class="built_in">std</span>::swap(xx,yy);</span><br><span class="line">    fa[xx]=yy;size[yy]+=size[xx];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>MST（最小生成树），即为给定图的所有生成树中路径权值和最小的一个生成树。</p>
+<p>求解有<code>Prim</code>和<code>Kruskal</code>两种算法。</p>
+<p>下面将讲解<code>Kruskal</code>算法</p>
+<h2 id="克鲁斯卡尔算法"><a href="#克鲁斯卡尔算法" class="headerlink" title="克鲁斯卡尔算法"></a>克鲁斯卡尔算法</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>先将给定图的边按<strong>权值</strong>从小到大排序，然后利用<strong>并查集</strong>的思想，依次将权值最小的边的<strong>两个端点</strong>合并，保证了<strong>最小</strong>原则。在合并时，注意检查两颗子树是否隶属同一根节点，否则跳过，保证了<strong>无环</strong>原则。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 10010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxm 20010</span></span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::sort;</span><br><span class="line"><span class="keyword">int</span> fa[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;<span class="keyword">while</span>(n--)fa[n]=n;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> fa[x]==x?x:find(fa[x]);&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> xx=find(x);<span class="keyword">int</span> yy=find(y);</span><br><span class="line">    <span class="keyword">if</span>(xx==yy) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    fa[xx]=yy; <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x,y,w;</span><br><span class="line">&#125;a[maxm];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(node a,node b)</span></span>&#123;<span class="keyword">return</span> a.w&lt;b.w;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,m,ans=<span class="number">0</span>,cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    init(n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;a[i].x,&amp;a[i].y,&amp;a[i].w);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(a,a+m,cmp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(merge(a[i].x,a[i].y))&#123;</span><br><span class="line">            ans+=a[i].w;</span><br><span class="line">            cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cnt==n<span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注意到一个性质"><a href="#注意到一个性质" class="headerlink" title="注意到一个性质"></a>注意到一个性质</h3><p>边按权值从小到大排序，每次仅取出最小边，可以考虑用<strong>堆</strong>来维护<del>（虽然被julao痛批但我一定要写上）</del></p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 10010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxm 20010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">  <span class="keyword">int</span> x,y,w;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> node a)<span class="keyword">const</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a.w&lt;w;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">priority_queue&lt;node&gt; q;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> fa[maxn];</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;<span class="keyword">while</span>(n--) fa[n]=n;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> fa[x]==x?x:find(fa[x]);&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> xx=find(x);<span class="keyword">int</span> yy=find(y);</span><br><span class="line">    <span class="keyword">if</span>(xx==yy) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    fa[xx]=yy; <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,m,ans=<span class="number">0</span>,cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    init(n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        node tmp;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;tmp.x,&amp;tmp.y,&amp;tmp.w);</span><br><span class="line">        q.push(tmp);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        node tmp=q.top();</span><br><span class="line">        q.pop();</span><br><span class="line">        <span class="keyword">if</span>(merge(tmp.x,tmp.y))&#123;</span><br><span class="line">            ans+=tmp.w;</span><br><span class="line">            cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cnt==n<span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（这里的堆并没有起到优化的作用，相反常数比sort大一些，仅供<del>喜欢</del>堆的选手使用）</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -208,143 +236,143 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://zgjjj.github.io/2019/02/11/最小生成树-学习笔记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/10/扩展欧几里得算法/" class="archive-article-date">
-  	<time datetime="2019-02-10T11:54:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-10</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/10/扩展欧几里得算法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">扩展欧几里得 学习报告</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/10/扩展欧几里得算法/">扩展欧几里得 学习报告</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习报告</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">exgcd</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#预备知识"><span class="toc-number">1.</span> <span class="toc-text">预备知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#生成树"><span class="toc-number">1.1.</span> <span class="toc-text">生成树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概念"><span class="toc-number">1.1.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#求法"><span class="toc-number">1.1.2.</span> <span class="toc-text">求法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意："><span class="toc-number">1.1.3.</span> <span class="toc-text">注意：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#典例："><span class="toc-number">1.1.3.1.</span> <span class="toc-text">典例：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#并查集"><span class="toc-number">1.2.</span> <span class="toc-text">并查集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#又称"><span class="toc-number">1.2.1.</span> <span class="toc-text">又称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#支持操作"><span class="toc-number">1.2.2.</span> <span class="toc-text">支持操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#朴素代码"><span class="toc-number">1.2.3.</span> <span class="toc-text">朴素代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化"><span class="toc-number">1.2.4.</span> <span class="toc-text">优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-number">1.2.5.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最小生成树"><span class="toc-number">2.</span> <span class="toc-text">最小生成树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">2.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#克鲁斯卡尔算法"><span class="toc-number">2.2.</span> <span class="toc-text">克鲁斯卡尔算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">2.2.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现"><span class="toc-number">2.2.2.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意到一个性质"><span class="toc-number">2.2.3.</span> <span class="toc-text">注意到一个性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-1"><span class="toc-number">2.2.4.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/10/HBSTC-2019-任务清单/" class="archive-article-date">
-  	<time datetime="2019-02-10T09:01:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/10/HBSTC-2019-任务清单/">HBTSC 2019 任务清单</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">复习计划</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习计划</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/01/2019寒假成都摸鱼记/" class="archive-article-date">
-  	<time datetime="2019-02-01T11:38:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/01/2019寒假成都摸鱼记/">2019寒假成都摸鱼记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">游记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
+        
+    </div>
+</aside>
 
 
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: '236827e23a5ecfc3da18',
+  	clientSecret: '5ac7771c2376137b31f36998fb51d7944403ad5b',
+  	repo: 'zgjjj.github.io',
+  	owner: 'zgjjj',
+  	admin: ['zgjjj'],
+  	id: 'Mon Feb 11 2019 18:46:48 GMT+0800',
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container') 
+}
+</script>
+  
           </div>
         </div>
       </div>
@@ -365,8 +393,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
