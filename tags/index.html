@@ -295,24 +295,30 @@
   
 
   
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
-<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "http://zgjjj.github.io/tags/index.html",
-  owner: 'zgjjj',
-  repo: 'zgjjj.github.io',
-  oauth: {
-    client_id: '236827e23a5ecfc3da18',
-    client_secret: '5ac7771c2376137b31f36998fb51d7944403ad5b',
-  },
+
+
+
+
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: '236827e23a5ecfc3da18',
+  	clientSecret: '5ac7771c2376137b31f36998fb51d7944403ad5b',
+  	repo: 'zgjjj.github.io',
+  	owner: 'zgjjj',
+  	admin: ['zgjjj'],
+  	id: 'Fri Jan 18 2019 13:30:41 GMT+0800',
+  	distractionFreeMode: 'true'
 })
-gitment.render('gitment-ctn')
+gitalk.render('gitalk-container') 
+}
 </script>
   
-
-
           </div>
         </div>
       </div>
