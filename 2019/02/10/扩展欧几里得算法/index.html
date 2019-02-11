@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="zgjjj的博客">
 <meta property="og:description" content="预备知识取模运算数${a}$对数${b}$取模，等价于数${a}$减去数${a}$除以数${b}$向下取整的商乘上数${b}$的差（好绕啊）。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-10T13:30:36.510Z">
+<meta property="og:updated_time" content="2019-02-11T09:55:46.160Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="扩展欧几里得 学习报告">
 <meta name="twitter:description" content="预备知识取模运算数${a}$对数${b}$取模，等价于数${a}$减去数${a}$除以数${b}$向下取整的商乘上数${b}$的差（好绕啊）。">
@@ -189,7 +189,7 @@
 <a id="more"></a>
 <p>其实就是下面这个式子：<br>$${a(mod\;b){\Longleftrightarrow}a-{\left\lfloor\dfrac{a}{b}\right\rfloor}\times b}$$<br>很好理解。</p>
 <h2 id="最大公约数"><a href="#最大公约数" class="headerlink" title="最大公约数"></a>最大公约数</h2><p>数${a}$,${b}$的最大公约数指同时能够整除${a}$,${b}$的最大的正整数。记为 _gcd(a,b)_。</p>
-<h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><h2 id="欧几里得定理"><a href="#欧几里得定理" class="headerlink" title="欧几里得定理"></a>欧几里得定理</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>又称<strong>辗转相除法</strong>，原理是这个式子：<br>$${gcd(a,b)=gcd(b,a(mod b))}$$<br>可以看出这个式子能够递归求解，递归边界为：<br>$${b=0}$$</p>
+<h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><h2 id="欧几里得定理"><a href="#欧几里得定理" class="headerlink" title="欧几里得定理"></a>欧几里得定理</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>又称<strong>辗转相除法</strong>，原理是这个式子：<br>$${gcd(a,b)=gcd(b,a(mod \; b))}$$<br>可以看出这个式子能够递归求解，递归边界为：<br>$${b=0}$$</p>
 <h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>${\forall a,b 且a&gt;b}$</p>
 <p>若${b\mid a}$ ，显然有${gcd(a,b)=b}$.</p>
 <p>考虑${b\nmid a}$：</p>
