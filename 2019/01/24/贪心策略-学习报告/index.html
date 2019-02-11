@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://zgjjj.github.io">
   <title>贪心策略 学习报告 | zgjjj的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="大胆贪心，（不用）小心证明。——阮行止  简介定义贪心算法，本质上来讲不是一种算法，而是一种策略。其基本思路是在题解满足局部最优解将导致全局最优解时，每一次决策考虑且仅考虑当前最优解。 举个例子就拿天朝RMB面额的设计来讲，仅举元这一单位，分别有1元，5元，10元，50元，100元五种面额。为什么要这样设计呢？在日常的生活中，我们买东西时就会发现，对于任意一个价格的商品，我们在购买时，要想花费最">
+  <meta name="description" content="大胆贪心，（不用）小心证明。——阮行止">
 <meta name="keywords" content="学习报告,贪心">
 <meta property="og:type" content="article">
 <meta property="og:title" content="贪心策略 学习报告">
 <meta property="og:url" content="http://zgjjj.github.io/2019/01/24/贪心策略-学习报告/index.html">
 <meta property="og:site_name" content="zgjjj的博客">
-<meta property="og:description" content="大胆贪心，（不用）小心证明。——阮行止  简介定义贪心算法，本质上来讲不是一种算法，而是一种策略。其基本思路是在题解满足局部最优解将导致全局最优解时，每一次决策考虑且仅考虑当前最优解。 举个例子就拿天朝RMB面额的设计来讲，仅举元这一单位，分别有1元，5元，10元，50元，100元五种面额。为什么要这样设计呢？在日常的生活中，我们买东西时就会发现，对于任意一个价格的商品，我们在购买时，要想花费最">
+<meta property="og:description" content="大胆贪心，（不用）小心证明。——阮行止">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-24T05:18:08.413Z">
+<meta property="og:updated_time" content="2019-02-11T01:38:46.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="贪心策略 学习报告">
-<meta name="twitter:description" content="大胆贪心，（不用）小心证明。——阮行止  简介定义贪心算法，本质上来讲不是一种算法，而是一种策略。其基本思路是在题解满足局部最优解将导致全局最优解时，每一次决策考虑且仅考虑当前最优解。 举个例子就拿天朝RMB面额的设计来讲，仅举元这一单位，分别有1元，5元，10元，50元，100元五种面额。为什么要这样设计呢？在日常的生活中，我们买东西时就会发现，对于任意一个价格的商品，我们在购买时，要想花费最">
+<meta name="twitter:description" content="大胆贪心，（不用）小心证明。——阮行止">
   
     <link rel="alternative" href="/atom.xml" title="zgjjj的博客" type="application/atom+xml">
   
@@ -184,6 +184,7 @@
         <blockquote>
 <p>大胆贪心，<del>（不用）</del>小心证明。<br>——阮行止</p>
 </blockquote>
+<a id="more"></a>
 <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>贪心算法，本质上来讲不是一种算法，而是一种策略。其基本思路是在题解满足<strong>局部最优解</strong>将导致<strong>全局最优解</strong>时，每一次<strong>决策</strong>考虑且仅考虑当前最优解。</p>
 <h2 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h2><p>就拿天朝RMB面额的设计来讲，仅举<strong>元</strong>这一单位，分别有<strong>1元，5元，10元，50元，100元</strong>五种面额。<br><strong>为什么要这样设计呢？</strong><br>在日常的生活中，我们买东西时就会发现，对于<strong>任意一个价格的商品</strong>，我们在购买时，要想花费最少张数的RMB，只需<strong>永远花费当前小于等于商品面额的货币</strong>。这就是一种贪心策略。</p>
 <h2 id="例子的证明"><a href="#例子的证明" class="headerlink" title="例子的证明"></a>例子的证明</h2><p><del>我太菜了不会证</del>。</p>
