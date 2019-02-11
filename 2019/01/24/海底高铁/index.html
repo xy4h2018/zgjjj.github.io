@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://zgjjj.github.io">
   <title>Luogu P3406 海底高铁 解题报告 | zgjjj的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目链接:P3406 海底高铁题目分析:​    （第一眼以为是最短路） 这道题作为前缀和的练习挺不错的，因为它几乎不涉及其他算法。 ​    首先根据题目中的信息进行数据读入：不开long long见祖宗（这题貌似不会） 123456789ll n,m,ans=0;//共N个城市,途经M个城市scanf(&quot;%lld%lld&quot;,&amp;amp;n,&amp;amp;m);ll p[m+1];//访问顺序ll t">
+  <meta name="description" content="题目链接:P3406 海底高铁题目分析:​    （第一眼以为是最短路） 这道题作为前缀和的练习挺不错的，因为它几乎不涉及其他算法。">
 <meta name="keywords" content="前缀和,差分,解题报告">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Luogu P3406 海底高铁 解题报告">
 <meta property="og:url" content="http://zgjjj.github.io/2019/01/24/海底高铁/index.html">
 <meta property="og:site_name" content="zgjjj的博客">
-<meta property="og:description" content="题目链接:P3406 海底高铁题目分析:​    （第一眼以为是最短路） 这道题作为前缀和的练习挺不错的，因为它几乎不涉及其他算法。 ​    首先根据题目中的信息进行数据读入：不开long long见祖宗（这题貌似不会） 123456789ll n,m,ans=0;//共N个城市,途经M个城市scanf(&quot;%lld%lld&quot;,&amp;amp;n,&amp;amp;m);ll p[m+1];//访问顺序ll t">
+<meta property="og:description" content="题目链接:P3406 海底高铁题目分析:​    （第一眼以为是最短路） 这道题作为前缀和的练习挺不错的，因为它几乎不涉及其他算法。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2018/12/15/5c14bd30327be.png">
-<meta property="og:updated_time" content="2019-01-26T13:26:50.980Z">
+<meta property="og:updated_time" content="2019-02-11T01:51:47.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Luogu P3406 海底高铁 解题报告">
-<meta name="twitter:description" content="题目链接:P3406 海底高铁题目分析:​    （第一眼以为是最短路） 这道题作为前缀和的练习挺不错的，因为它几乎不涉及其他算法。 ​    首先根据题目中的信息进行数据读入：不开long long见祖宗（这题貌似不会） 123456789ll n,m,ans=0;//共N个城市,途经M个城市scanf(&quot;%lld%lld&quot;,&amp;amp;n,&amp;amp;m);ll p[m+1];//访问顺序ll t">
+<meta name="twitter:description" content="题目链接:P3406 海底高铁题目分析:​    （第一眼以为是最短路） 这道题作为前缀和的练习挺不错的，因为它几乎不涉及其他算法。">
 <meta name="twitter:image" content="https://i.loli.net/2018/12/15/5c14bd30327be.png">
   
     <link rel="alternative" href="/atom.xml" title="zgjjj的博客" type="application/atom+xml">
@@ -183,8 +183,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="题目链接-P3406-海底高铁"><a href="#题目链接-P3406-海底高铁" class="headerlink" title="题目链接:P3406 海底高铁"></a>题目链接:<a href="https://www.luogu.org/problemnew/show/P3406" target="_blank" rel="noopener">P3406 海底高铁</a></h3><h3 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析:"></a>题目分析:</h3><p>​    <del>（第一眼以为是最短路）</del> 这道题作为前缀和的练习挺不错的，因为它<strong>几乎不涉及其他算法</strong>。</p>
-<p>​    首先根据题目中的信息进行数据读入：<del>不开long long见祖宗（这题貌似不会）</del></p>
+        <h3 id="题目链接-P3406-海底高铁"><a href="#题目链接-P3406-海底高铁" class="headerlink" title="题目链接:P3406 海底高铁"></a>题目链接:<a href="https://www.luogu.org/problemnew/show/P3406" target="_blank" rel="noopener">P3406 海底高铁</a></h3><h3 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析:"></a>题目分析:</h3><p>​    <del>（第一眼以为是最短路）</del> 这道题作为前缀和的练习挺不错的，因为它<strong>几乎不涉及其他算法</strong>。<br>   <a id="more"></a><br>​    首先根据题目中的信息进行数据读入：<del>不开long long见祖宗（这题貌似不会）</del></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ll n,m,ans=<span class="number">0</span>;<span class="comment">//共N个城市,途经M个城市</span></span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;n,&amp;m);</span><br><span class="line">ll p[m+<span class="number">1</span>];<span class="comment">//访问顺序</span></span><br><span class="line">ll t[n+<span class="number">1</span>]=&#123;&#125;;<span class="comment">//经过次数,一定要初始化！</span></span><br><span class="line">ll a[n+<span class="number">1</span>],b[n+<span class="number">1</span>],c[n+<span class="number">1</span>],x,y;<span class="comment">//a[i]纸质单程票,b[i]办卡后的优惠价,c[i]办卡工本费</span></span><br><span class="line"><span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;p[i]);</span><br><span class="line"><span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=n<span class="number">-1</span>;i++)</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>,&amp;a[i],&amp;b[i],&amp;c[i]);</span><br></pre></td></tr></table></figure>
 <p>​    由于<strong>第i段铁路连接了城市i和城市i+1</strong>，所以<strong>任意两个相邻的站点购买同种车票有且仅有一种费用</strong>，也就是说，价格仅与在某相邻两站之间的<strong>通过次数</strong>有关。此时，我们就将问题转化为<strong>求在给定路线下，每相邻两个站点路段的经过次数.</strong></p>
 <p>​    那么，在出发之前，我们可以将每两站之间路段的经过次数<strong>全部初始化为0</strong>，然后，对每次给定的始发站和终到站，将其视作给定区间的两个端点，对此区间进行<strong>区间增</strong>操作。</p>
