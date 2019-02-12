@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zgjjj.github.io/"/>
-  <updated>2019-02-11T13:29:38.544Z</updated>
+  <updated>2019-02-12T03:35:37.603Z</updated>
   <id>http://zgjjj.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SDOI2009 SuperGCD解题报告(瞎搞)</title>
+    <link href="http://zgjjj.github.io/2019/02/12/SDOI/"/>
+    <id>http://zgjjj.github.io/2019/02/12/SDOI/</id>
+    <published>2019-02-12T03:32:20.000Z</published>
+    <updated>2019-02-12T03:35:37.603Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题目简述"><a href="#题目简述" class="headerlink" title="题目简述"></a>题目简述</h1><p>高精求gcd</p><h1 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h1><p><del>python不存在高精的</del></p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><del>明明能更短</del><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print (__import__('fractions').gcd(int(input()),int(input())))</span><br></pre></td></tr></table></figure></p><blockquote><p>人生苦短，我用python</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;题目简述&quot;&gt;&lt;a href=&quot;#题目简述&quot; class=&quot;headerlink&quot; title=&quot;题目简述&quot;&gt;&lt;/a&gt;题目简述&lt;/h1&gt;&lt;p&gt;高精求gcd&lt;/p&gt;
+&lt;h1 id=&quot;思想&quot;&gt;&lt;a href=&quot;#思想&quot; class=&quot;headerlink&quot; title=
+      
+    
+    </summary>
+    
+    
+      <category term="解题报告" scheme="http://zgjjj.github.io/tags/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/"/>
+    
+      <category term="py3" scheme="http://zgjjj.github.io/tags/py3/"/>
+    
+  </entry>
   
   <entry>
     <title>最小生成树 学习笔记</title>
