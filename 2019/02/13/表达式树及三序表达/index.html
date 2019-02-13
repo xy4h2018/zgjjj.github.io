@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="http://zgjjj.github.io">
   <title>表达式树及三序表达 | zgjjj的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="预备知识需要了解树的先序、中序、后序遍历 先来看一道题目 （源自洛谷有题） 这是2017年TG初赛试题，这篇文章主要讲述如何快速有效地解这一类题。 关于表达式的三序表达定义我们用一个例子来说明：    名称 表达式     中序表达式 $2\times 3/(2-1)+3\times(4-1)$   前序表达式 $+/\times23-21*3-41$   后序表达式 $23\times21-/3">
+  <meta name="description" content="预备知识需要了解树的先序、中序、后序遍历">
 <meta name="keywords" content="技巧,学术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="表达式树及三序表达">
 <meta property="og:url" content="http://zgjjj.github.io/2019/02/13/表达式树及三序表达/index.html">
 <meta property="og:site_name" content="zgjjj的博客">
-<meta property="og:description" content="预备知识需要了解树的先序、中序、后序遍历 先来看一道题目 （源自洛谷有题） 这是2017年TG初赛试题，这篇文章主要讲述如何快速有效地解这一类题。 关于表达式的三序表达定义我们用一个例子来说明：    名称 表达式     中序表达式 $2\times 3/(2-1)+3\times(4-1)$   前序表达式 $+/\times23-21*3-41$   后序表达式 $23\times21-/3">
+<meta property="og:description" content="预备知识需要了解树的先序、中序、后序遍历">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2019/02/13/5c63c1b262992.jpg">
 <meta property="og:image" content="https://i.loli.net/2019/02/13/5c63c68026d33.png">
 <meta property="og:image" content="https://i.loli.net/2019/02/13/5c63c68026d33.png">
-<meta property="og:updated_time" content="2019-02-13T07:35:08.067Z">
+<meta property="og:updated_time" content="2019-02-13T07:36:45.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="表达式树及三序表达">
-<meta name="twitter:description" content="预备知识需要了解树的先序、中序、后序遍历 先来看一道题目 （源自洛谷有题） 这是2017年TG初赛试题，这篇文章主要讲述如何快速有效地解这一类题。 关于表达式的三序表达定义我们用一个例子来说明：    名称 表达式     中序表达式 $2\times 3/(2-1)+3\times(4-1)$   前序表达式 $+/\times23-21*3-41$   后序表达式 $23\times21-/3">
+<meta name="twitter:description" content="预备知识需要了解树的先序、中序、后序遍历">
 <meta name="twitter:image" content="https://i.loli.net/2019/02/13/5c63c1b262992.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zgjjj的博客" type="application/atom+xml">
@@ -184,6 +184,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h1><p>需要了解树的先序、中序、后序遍历</p>
+<a id="more"></a>
 <h1 id="先来看一道题目"><a href="#先来看一道题目" class="headerlink" title="先来看一道题目"></a>先来看一道题目</h1><p><img src="https://i.loli.net/2019/02/13/5c63c1b262992.jpg" alt=""></p>
 <p>（源自洛谷有题）</p>
 <p>这是2017年TG初赛试题，这篇文章主要讲述如何<strong>快速有效</strong>地解这一类题。</p>
