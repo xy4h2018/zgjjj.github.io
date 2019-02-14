@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zgjjj.github.io/"/>
-  <updated>2019-02-13T09:15:33.350Z</updated>
+  <updated>2019-02-14T10:03:51.317Z</updated>
   <id>http://zgjjj.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>字符串Hash 学习报告</title>
+    <link href="http://zgjjj.github.io/2019/02/14/%E5%AD%97%E7%AC%A6%E4%B8%B2Hash-%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/"/>
+    <id>http://zgjjj.github.io/2019/02/14/字符串Hash-学习报告/</id>
+    <published>2019-02-14T09:38:10.000Z</published>
+    <updated>2019-02-14T10:03:51.317Z</updated>
+    
+    <content type="html"><![CDATA[<p>听julao xht的建议学了字符串哈希。<br><a id="more"></a></p><p>先挂一张图：</p><p><img src="https://i.loli.net/2019/02/14/5c6537a8a0050.jpg" alt=""></p><p>图源：xht 拍自<strong>《进阶指南》</strong></p><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h2><p>如书中所说，字符串hash可以将<strong>任何字符串</strong>映射成一个<strong>非负整数</strong>的值，从而方便进行比较。</p><h2 id="hash冲突"><a href="#hash冲突" class="headerlink" title="hash冲突"></a>hash冲突</h2><p>指两个或多个不同的字符串被映射到同一个<strong>非负整数</strong>的情况。</p><h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><h2 id="如何求给定串的Hash值"><a href="#如何求给定串的Hash值" class="headerlink" title="如何求给定串的Hash值"></a>如何求给定串的Hash值</h2><p>首先选取一个<strong>固定值P</strong>（最好是质数），我们可以把字符串看成一个<strong>P进制数</strong>，以此映射到一个非负整数的值上。</p><p>接着选取一个<strong>固定模数M</strong>，将上述<strong>P进制数模M意义下的值</strong>作为<strong>原字符串</strong>的Hash值。</p><p>通常，我们选取$2^{64}$作为模数，这样就可以使用<strong>unsigned long long 类型</strong>来储存原P进制数，在大于模数M时自动溢出，可<strong>避免低效取模运算</strong>。</p><h2 id="如何处理hash冲突"><a href="#如何处理hash冲突" class="headerlink" title="如何处理hash冲突"></a>如何处理hash冲突</h2><p><strong>任何数据都无法避免Hash冲突</strong></p><p>我们可以做的，只是尽可能减少冲突概率。</p><p>有以下几种做法：</p><h3 id="在模数上"><a href="#在模数上" class="headerlink" title="在模数上"></a>在模数上</h3><p>对于P，我们可以选用<strong>P=131</strong>或<strong>P=13331</strong>。<del>对于M，我们可以选用19260817</del></p><h3 id="其他做法"><a href="#其他做法" class="headerlink" title="其他做法"></a>其他做法</h3><p>可以进行多组Hash，使用一个<strong>多元组</strong>储存不同hash的结果，在比对时逐次比对，可以<strong>有效降低</strong>Hash冲突。</p><h2 id="对应字符串的操作"><a href="#对应字符串的操作" class="headerlink" title="对应字符串的操作"></a>对应字符串的操作</h2><p>设$F[s]​$储存字符串$s​$的Hash值，那么对于一个新串$t​$，我们有</p><p>$${F[t]=(F[s+t]-F[s]*P^{strlen(t)})}$$</p><p>对应到P进制数上，就相当于<strong>左移操作</strong>。</p><p>当$t$为一个字符${c}$时，我们可以得到字符串Hash值的初始化公式：</p><p>$${F[s+c]=F[s]+p\times value[c]}$$</p><p>一般$value[c]$取$ASCII$码中字符c的对应值。</p><h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p><del><a href="https://www.luogu.org/problemnew/show/P3370" target="_blank" rel="noopener">Luogu P3370 【模板】字符串哈希</a></del>(这题${Set}$和${Map}$可以水过)</p><p><a href="http://contest-hunter.org:83/contest/0x10%E3%80%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%8D%E4%BE%8B%E9%A2%98/1401%20%E5%85%94%E5%AD%90%E4%B8%8E%E5%85%94%E5%AD%90" target="_blank" rel="noopener">CH1401 兔子与兔子</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;听julao xht的建议学了字符串哈希。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="学习报告" scheme="http://zgjjj.github.io/tags/%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/"/>
+    
+      <category term="字符串" scheme="http://zgjjj.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="Hash" scheme="http://zgjjj.github.io/tags/Hash/"/>
+    
+  </entry>
   
   <entry>
     <title>裴蜀定理 学习报告</title>
@@ -65,8 +89,8 @@
   
   <entry>
     <title>Luogu P2822 组合数问题 解题报告</title>
-    <link href="http://zgjjj.github.io/2019/02/13/Luogu-P/"/>
-    <id>http://zgjjj.github.io/2019/02/13/Luogu-P/</id>
+    <link href="http://zgjjj.github.io/2019/02/13/%E7%BB%84%E5%90%88%E6%95%B0%E9%97%AE%E9%A2%98/"/>
+    <id>http://zgjjj.github.io/2019/02/13/组合数问题/</id>
     <published>2019-02-13T02:14:12.000Z</published>
     <updated>2019-02-13T03:09:45.227Z</updated>
     
@@ -91,8 +115,8 @@
   
   <entry>
     <title>SDOI2009 SuperGCD解题报告(瞎搞)</title>
-    <link href="http://zgjjj.github.io/2019/02/12/SDOI/"/>
-    <id>http://zgjjj.github.io/2019/02/12/SDOI/</id>
+    <link href="http://zgjjj.github.io/2019/02/12/SuperGCD/"/>
+    <id>http://zgjjj.github.io/2019/02/12/SuperGCD/</id>
     <published>2019-02-12T03:32:20.000Z</published>
     <updated>2019-02-12T03:35:37.603Z</updated>
     

@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://zgjjj.github.io">
-  <title>Luogu P1616 疯狂的采药 解题报告 | zgjjj的博客</title>
+  <title>字符串Hash 学习报告 | zgjjj的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目链接:P1616 疯狂的采药题目分析：很明显的完全背包。">
-<meta name="keywords" content="解题报告,线性DP">
+  <meta name="description" content="听julao xht的建议学了字符串哈希。">
+<meta name="keywords" content="学习报告,字符串,Hash">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Luogu P1616 疯狂的采药 解题报告">
-<meta property="og:url" content="http://zgjjj.github.io/2019/01/19/疯狂的采药/index.html">
+<meta property="og:title" content="字符串Hash 学习报告">
+<meta property="og:url" content="http://zgjjj.github.io/2019/02/14/字符串Hash-学习报告/index.html">
 <meta property="og:site_name" content="zgjjj的博客">
-<meta property="og:description" content="题目链接:P1616 疯狂的采药题目分析：很明显的完全背包。">
+<meta property="og:description" content="听julao xht的建议学了字符串哈希。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-24T04:03:41.967Z">
+<meta property="og:image" content="https://i.loli.net/2019/02/14/5c6537a8a0050.jpg">
+<meta property="og:updated_time" content="2019-02-14T10:03:51.317Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Luogu P1616 疯狂的采药 解题报告">
-<meta name="twitter:description" content="题目链接:P1616 疯狂的采药题目分析：很明显的完全背包。">
+<meta name="twitter:title" content="字符串Hash 学习报告">
+<meta name="twitter:description" content="听julao xht的建议学了字符串哈希。">
+<meta name="twitter:image" content="https://i.loli.net/2019/02/14/5c6537a8a0050.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zgjjj的博客" type="application/atom+xml">
   
@@ -159,64 +161,49 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-疯狂的采药" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-字符串Hash-学习报告" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Luogu P1616 疯狂的采药 解题报告
+      字符串Hash 学习报告
     </h1>
   
 
         
-        <a href="/2019/01/19/疯狂的采药/" class="archive-article-date">
-  	<time datetime="2019-01-19T05:14:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-19</time>
+        <a href="/2019/02/14/字符串Hash-学习报告/" class="archive-article-date">
+  	<time datetime="2019-02-14T09:38:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="题目链接-P1616-疯狂的采药"><a href="#题目链接-P1616-疯狂的采药" class="headerlink" title="题目链接:P1616 疯狂的采药"></a>题目链接:<a href="https://www.luogu.org/problemnew/show/P1616" target="_blank" rel="noopener">P1616 疯狂的采药</a></h2><h2 id="题目分析："><a href="#题目分析：" class="headerlink" title="题目分析："></a>题目分析：</h2><p><del>很明显的</del>完全背包。<br><a id="more"></a><br>首先，我们先把这道题转化为标准完全背包：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">各种草药</th>
-<th style="text-align:center">物品</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><strong>草药的价值</strong></td>
-<td style="text-align:center"><strong>物品的价值</strong></td>
-</tr>
-<tr>
-<td style="text-align:center"><strong>草药的采摘时间</strong></td>
-<td style="text-align:center"><strong>物品的质量</strong></td>
-</tr>
-<tr>
-<td style="text-align:center"><strong>总采摘时间</strong></td>
-<td style="text-align:center"><strong>背包容量</strong></td>
-</tr>
-</tbody>
-</table>
-<p>ok,那么这道题就变成了板子题。</p>
-<p>我们先来<strong>设计状态</strong>：</p>
-<p>设<br>$$\text{dp[i]为背包容量为i时，能放下的物品的最大价值}$$</p>
-<p>$$\text{t[j]与p[j]分别存储第j个物品的质量和价值}$$</p>
-<p>然后进行<strong>状态转移</strong>：</p>
-<p>对于容量为k的背包，第m个物品，我们考虑：</p>
-<p>如果放这件物品，那么k容量背包的价值为dp[k-t[m]]+p[m]</p>
-<p>如果不放，那么k容量背包的价值仍为原始的dp[k]</p>
-<p>根据数组dp的定义，我们可以得到状态转移方程:</p>
-<p>$$\text{dp[k]=max(dp[k-t[m]]+p[m],dp[k])}$$</p>
-<p>同时，我们需要考虑该物品放入背包的先决条件：</p>
-<p>$$\text{k-t[m]}\ge\text{0}$$</p>
-<p>考虑每一件物品，并且综合上面的条件,我们得到了代码：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=T;i++)&#123;</span><br><span class="line">		dp[i]=<span class="number">0</span>;</span><br><span class="line">        <span class="comment">//初始化，可通过将数组开在主函数外面省略这一步</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(i-t[j]&gt;=<span class="number">0</span>) dp[i]=max(dp[i],dp[i-t[j]]+p[j])</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
-<p>问题所求的便是<strong>dp[T]。</strong></p>
-<h2 id="Source-Code"><a href="#Source-Code" class="headerlink" title="Source Code"></a>Source Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::max;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,T;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;T,&amp;n);</span><br><span class="line">	<span class="keyword">int</span> t[n+<span class="number">1</span>],p[n+<span class="number">1</span>],dp[T+<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;t[i],&amp;p[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	dp[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=T;i++)&#123;</span><br><span class="line">		dp[i]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(i-t[j]&gt;=<span class="number">0</span>) dp[i]=max(dp[i],dp[i-t[j]]+p[j])</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,dp[T]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>听julao xht的建议学了字符串哈希。<br><a id="more"></a></p>
+<p>先挂一张图：</p>
+<p><img src="https://i.loli.net/2019/02/14/5c6537a8a0050.jpg" alt=""></p>
+<p>图源：xht 拍自<strong>《进阶指南》</strong></p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h2><p>如书中所说，字符串hash可以将<strong>任何字符串</strong>映射成一个<strong>非负整数</strong>的值，从而方便进行比较。</p>
+<h2 id="hash冲突"><a href="#hash冲突" class="headerlink" title="hash冲突"></a>hash冲突</h2><p>指两个或多个不同的字符串被映射到同一个<strong>非负整数</strong>的情况。</p>
+<h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><h2 id="如何求给定串的Hash值"><a href="#如何求给定串的Hash值" class="headerlink" title="如何求给定串的Hash值"></a>如何求给定串的Hash值</h2><p>首先选取一个<strong>固定值P</strong>（最好是质数），我们可以把字符串看成一个<strong>P进制数</strong>，以此映射到一个非负整数的值上。</p>
+<p>接着选取一个<strong>固定模数M</strong>，将上述<strong>P进制数模M意义下的值</strong>作为<strong>原字符串</strong>的Hash值。</p>
+<p>通常，我们选取$2^{64}$作为模数，这样就可以使用<strong>unsigned long long 类型</strong>来储存原P进制数，在大于模数M时自动溢出，可<strong>避免低效取模运算</strong>。</p>
+<h2 id="如何处理hash冲突"><a href="#如何处理hash冲突" class="headerlink" title="如何处理hash冲突"></a>如何处理hash冲突</h2><p><strong>任何数据都无法避免Hash冲突</strong></p>
+<p>我们可以做的，只是尽可能减少冲突概率。</p>
+<p>有以下几种做法：</p>
+<h3 id="在模数上"><a href="#在模数上" class="headerlink" title="在模数上"></a>在模数上</h3><p>对于P，我们可以选用<strong>P=131</strong>或<strong>P=13331</strong>。<del>对于M，我们可以选用19260817</del></p>
+<h3 id="其他做法"><a href="#其他做法" class="headerlink" title="其他做法"></a>其他做法</h3><p>可以进行多组Hash，使用一个<strong>多元组</strong>储存不同hash的结果，在比对时逐次比对，可以<strong>有效降低</strong>Hash冲突。</p>
+<h2 id="对应字符串的操作"><a href="#对应字符串的操作" class="headerlink" title="对应字符串的操作"></a>对应字符串的操作</h2><p>设$F[s]​$储存字符串$s​$的Hash值，那么对于一个新串$t​$，我们有</p>
+<p>$${F[t]=(F[s+t]-F[s]*P^{strlen(t)})}$$</p>
+<p>对应到P进制数上，就相当于<strong>左移操作</strong>。</p>
+<p>当$t$为一个字符${c}$时，我们可以得到字符串Hash值的初始化公式：</p>
+<p>$${F[s+c]=F[s]+p\times value[c]}$$</p>
+<p>一般$value[c]$取$ASCII$码中字符c的对应值。</p>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p><del><a href="https://www.luogu.org/problemnew/show/P3370" target="_blank" rel="noopener">Luogu P3370 【模板】字符串哈希</a></del>(这题${Set}$和${Map}$可以水过)</p>
+<p><a href="http://contest-hunter.org:83/contest/0x10%E3%80%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%8D%E4%BE%8B%E9%A2%98/1401%20%E5%85%94%E5%AD%90%E4%B8%8E%E5%85%94%E5%AD%90" target="_blank" rel="noopener">CH1401 兔子与兔子</a></p>
+
       
 
       
@@ -229,11 +216,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">解题报告</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习报告</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">线性DP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">字符串</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hash</a>
         		</li>
       		
 		</ul>
@@ -289,7 +280,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://zgjjj.github.io/2019/01/19/疯狂的采药/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://zgjjj.github.io/2019/02/14/字符串Hash-学习报告/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -303,18 +294,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/01/24/贪心策略-学习报告/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          贪心策略 学习报告
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/01/19/小闹钟/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">小闹钟</div>
+    <a href="/2019/02/13/裴蜀定理-学习报告/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">裴蜀定理 学习报告</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -341,7 +323,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目链接-P1616-疯狂的采药"><span class="toc-number">1.</span> <span class="toc-text">题目链接:P1616 疯狂的采药</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目分析："><span class="toc-number">2.</span> <span class="toc-text">题目分析：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Source-Code"><span class="toc-number">3.</span> <span class="toc-text">Source Code</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#意义"><span class="toc-number">1.1.</span> <span class="toc-text">意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hash冲突"><span class="toc-number">1.2.</span> <span class="toc-text">hash冲突</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#流程"><span class="toc-number">2.</span> <span class="toc-text">流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何求给定串的Hash值"><span class="toc-number">2.1.</span> <span class="toc-text">如何求给定串的Hash值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何处理hash冲突"><span class="toc-number">2.2.</span> <span class="toc-text">如何处理hash冲突</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在模数上"><span class="toc-number">2.2.1.</span> <span class="toc-text">在模数上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他做法"><span class="toc-number">2.2.2.</span> <span class="toc-text">其他做法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对应字符串的操作"><span class="toc-number">2.3.</span> <span class="toc-text">对应字符串的操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#例题"><span class="toc-number">3.</span> <span class="toc-text">例题</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -378,7 +360,7 @@ if(true){
   	repo: 'zgjjj.github.io',
   	owner: 'zgjjj',
   	admin: ['zgjjj'],
-  	id: 'Sat Jan 19 2019 13:14:16 GMT+0800',
+  	id: 'Thu Feb 14 2019 17:38:10 GMT+0800',
   	distractionFreeMode: 'true'
 })
 gitalk.render('gitalk-container') 

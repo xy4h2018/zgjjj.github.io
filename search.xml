@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[字符串Hash 学习报告]]></title>
+    <url>%2F2019%2F02%2F14%2F%E5%AD%97%E7%AC%A6%E4%B8%B2Hash-%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%2F</url>
+    <content type="text"><![CDATA[听julao xht的建议学了字符串哈希。 先挂一张图： 图源：xht 拍自《进阶指南》 简介意义如书中所说，字符串hash可以将任何字符串映射成一个非负整数的值，从而方便进行比较。 hash冲突指两个或多个不同的字符串被映射到同一个非负整数的情况。 流程如何求给定串的Hash值首先选取一个固定值P（最好是质数），我们可以把字符串看成一个P进制数，以此映射到一个非负整数的值上。 接着选取一个固定模数M，将上述P进制数模M意义下的值作为原字符串的Hash值。 通常，我们选取$2^{64}$作为模数，这样就可以使用unsigned long long 类型来储存原P进制数，在大于模数M时自动溢出，可避免低效取模运算。 如何处理hash冲突任何数据都无法避免Hash冲突 我们可以做的，只是尽可能减少冲突概率。 有以下几种做法： 在模数上对于P，我们可以选用P=131或P=13331。对于M，我们可以选用19260817 其他做法可以进行多组Hash，使用一个多元组储存不同hash的结果，在比对时逐次比对，可以有效降低Hash冲突。 对应字符串的操作设$F[s]​$储存字符串$s​$的Hash值，那么对于一个新串$t​$，我们有 $${F[t]=(F[s+t]-F[s]*P^{strlen(t)})}$$ 对应到P进制数上，就相当于左移操作。 当$t$为一个字符${c}$时，我们可以得到字符串Hash值的初始化公式： $${F[s+c]=F[s]+p\times value[c]}$$ 一般$value[c]$取$ASCII$码中字符c的对应值。 例题Luogu P3370 【模板】字符串哈希(这题${Set}$和${Map}$可以水过) CH1401 兔子与兔子]]></content>
+      <tags>
+        <tag>学习报告</tag>
+        <tag>字符串</tag>
+        <tag>Hash</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[裴蜀定理 学习报告]]></title>
     <url>%2F2019%2F02%2F13%2F%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86-%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%2F</url>
     <content type="text"><![CDATA[（这玩意真不难） 前置知识会$gcd$就行了。 定理$$\forall a,b,x,y,d\in Z,ax+by=d当且仅当gcd(a,b)\mid d$$ 简要证明设$s=gcd(a,b)$，显然有$s\mid a$且${s\mid b}$ 又因为${x,y\in Z}$，显然有$s\mid ax$且${s\mid by}$ 所以${s\mid ax+by}$ 又因为${ax+by=d}$ 所以$s\mid d$ 所以$gcd(a,b)\mid d$ 推广 方程$ax+by=1$有解当且仅当$x,y$互素 对于给定数列$\{a\}$,表达式$\sum\limits_{i=1}^na_ix_i&gt;0 $最小正整数值为${\gcd\limits_{1\le i\le n}\{|a_i|\}}$ 应用P4549 【模板】裴蜀定理 直接运用推广2求解就好，记得取${|a_i|}$ (说了很简单)]]></content>
@@ -21,7 +31,7 @@
   </entry>
   <entry>
     <title><![CDATA[Luogu P2822 组合数问题 解题报告]]></title>
-    <url>%2F2019%2F02%2F13%2FLuogu-P%2F</url>
+    <url>%2F2019%2F02%2F13%2F%E7%BB%84%E5%90%88%E6%95%B0%E9%97%AE%E9%A2%98%2F</url>
     <content type="text"><![CDATA[暴力能拿90（雾 题目题目描述组合数 ${C_n^m}$表示的是从${n}$ 个物品中选出${m}$个物品的方案数。举个例子，从 ${(1,2,3)}$三个物品中选择两个物品可以有 ${(1,2),(1,3),(2,3)}$这三种选择方法。根据组合数的定义，我们可以给出计算组合数${C_n^m}$的一般公式： $${C_n^m=\frac{n!}{m!(n-m)!}}$$ 其中${n!=\prod\limits_{i=1}^ni}$；特别地，定义${0!=1}$。 小葱想知道如果给定${n,m}$和${k}$，对于所有的${0\leq i\leq n,0\leq j\leq \min \left ( i, m \right )}$有多少对 (i,j)(i,j) 满足${C_i^j}$是${k}$的倍数。 输入输出格式输入格式：第一行有两个整数${t,k}$，其中代${t}$表该测试点总共有多少组测试数据，${k}$的意义见问题描述。 接下来${t}$行每行两个整数${n,m}$，其中${ n,m}$的意义见问题描述。 输出格式：共$t$行，每行一个整数代表所有的$0\leq i\leq n,0\leq j\leq \min \left ( i, m \right )$中有多少对$(i,j)$满足$C_i^j$是$k$的倍数。 输入输出样例输入样例#1： 121 23 3 输出样例#1： 11 输入样例#2： 1232 54 56 7 输出样例#2： 1207 17 说明【样例1说明】 在所有可能的情况中，只有$C_2^1 = 2$是2的倍数。 【子任务】 分析30分做法照着题目打组合数公式。 优化的话，可以将阶乘打表，或者写INT_128将$C_{0\le i\le 2000}^{0\le j \le i}$打表 很无脑，没写代码。 50分做法打标算，多组数据输出不换行。 就像这样 70分做法发现需求出$C_{0\le i\le n}^{0\le j\le \min(i,m)}$ 考虑组合数递推：$$ C^m_n=C^{m-1}_{n-1}+C^{m-1}_n​$$ 可${O(mn)}$预处理。 但需要注意初始化，即递推起点：$${C_0^0=C_1^0=C_1^1=1}$$ 实现：123456789void build()&#123; c[0][0]=c[1][0]=c[1][1]=1; for(register int i=2;i&lt;=2000;i++)&#123; c[i][0]=1; for(register int j=1;j&lt;=i;j++)&#123; c[i][j]=(c[i-1][j-1]+c[i-1][j]); &#125; &#125;&#125; 90分做法观察到多组数据模数一致，可以在预处理时取模。 实现：123456789void build()&#123; c[0][0]=c[1][0]=c[1][1]=1; for(register int i=2;i&lt;=2000;i++)&#123; c[i][0]=1; for(register int j=1;j&lt;=i;j++)&#123; c[i][j]=(c[i-1][j-1]+c[i-1][j])%k; &#125; &#125;&#125; 100分做法观察到模数一致，考虑实现${O(1)}$查询：用前缀和维护一个答案数组ans[n][m]，在预处理组合数时进行维护。 注意容斥： 1ans[i][j]=ans[i-1][j]+ans[i][j-1]-ans[i-1][j-1]; 注意对于当前数据的更新： 1if(!c[i][j]) ans[i][j]++; 注意答案传递：（想不明白可以画一个杨辉三角手玩） 1ans[i][i+1]=ans[i][i]; 对于100分的做法，需要注意到$Sample\;2$：在$Sample\; Input\; 2$中，出现了$m&gt;n$的违法情况，对于这类数据，在答案输出时特判，输出ans[n][n] 代码1234567891011121314151617181920212223242526272829#include&lt;cstdio&gt;#define ll long longinline ll min(ll a,ll b)&#123;return a&lt;b?a:b;&#125;const int maxn = 2010;ll t,n,m,k,c[maxn][maxn],ans[maxn][maxn];inline void build()&#123; c[0][0]=c[1][0]=c[1][1]=1; for(register int i=2;i&lt;=2000;i++)&#123; c[i][0]=1; for(register int j=1;j&lt;=i;j++)&#123; c[i][j]=(c[i-1][j-1]+c[i-1][j])%k; ans[i][j]=ans[i-1][j]+ans[i][j-1]-ans[i-1][j-1]; if(!c[i][j]) ans[i][j]++; &#125; ans[i][i+1]=ans[i][i]; &#125;&#125;int main()&#123; scanf("%lld%lld",&amp;t,&amp;k); build(); while(t--)&#123; scanf("%lld%lld",&amp;n,&amp;m); printf("%lld\n",m&gt;n?ans[n][n]:ans[n][m]); &#125; return 0;&#125; 注意事项这题坑不少，谈一谈作者实现时的问题： 对于$m=0$的数据，快读有锅，应换用标准输入输出； 多组数据题，输出时一定要换行！puts(&quot;&quot;);； 容斥和答案继承都是坑； 若非标算，在多组数据处理前应初始化ans； 目前没想到离线做法。]]></content>
       <tags>
         <tag>解题报告</tag>
@@ -31,7 +41,7 @@
   </entry>
   <entry>
     <title><![CDATA[SDOI2009 SuperGCD解题报告(瞎搞)]]></title>
-    <url>%2F2019%2F02%2F12%2FSDOI%2F</url>
+    <url>%2F2019%2F02%2F12%2FSuperGCD%2F</url>
     <content type="text"><![CDATA[题目简述高精求gcd 思想python不存在高精的 代码明明能更短1print (__import__('fractions').gcd(int(input()),int(input()))) 人生苦短，我用python]]></content>
       <tags>
         <tag>解题报告</tag>
