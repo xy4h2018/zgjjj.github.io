@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="zgjjj的博客">
 <meta property="og:description" content="前言在计算机中，数据都使用二进制存储与操作。因此，学习位运算不仅可以优化我们的程序（使可读性–），还可以帮助我们理解程序运行中的种种表现，帮助我们更好的DEBUG（卡常）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-26T09:03:00.179Z">
+<meta property="og:updated_time" content="2019-02-28T07:10:34.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="位运算与二进制状态压缩 学习报告">
 <meta name="twitter:description" content="前言在计算机中，数据都使用二进制存储与操作。因此，学习位运算不仅可以优化我们的程序（使可读性–），还可以帮助我们理解程序运行中的种种表现，帮助我们更好的DEBUG（卡常）">
@@ -241,8 +241,8 @@
 </tbody>
 </table>
 <p><del>可以在脑中模拟一下，应该很好理解</del></p>
-<h2 id="成对变换"><a href="#成对变换" class="headerlink" title="成对变换"></a>成对变换</h2><p>对于一个偶数${n}$，我们有${n+1=n|1}$</p>
-<p>同样的，对于一个奇数${n}$，我们有${n-1=n|1}$</p>
+<h2 id="成对变换"><a href="#成对变换" class="headerlink" title="成对变换"></a>成对变换</h2><p>对于一个偶数${n}$，我们有${n+1=n \; xor \;1}$</p>
+<p>同样的，对于一个奇数${n}$，我们有${n-1=n \; xor \;1}$</p>
 <h3 id="运用"><a href="#运用" class="headerlink" title="运用"></a>运用</h3><p><strong>滚动数组</strong>和<strong>邻接表存反图</strong></p>
 <h2 id="lowbit"><a href="#lowbit" class="headerlink" title="lowbit"></a>lowbit</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> x&amp;-x;&#125;</span><br></pre></td></tr></table></figure>
 <p>这是代码，作用为取出数$x$的最低位的1。</p>
