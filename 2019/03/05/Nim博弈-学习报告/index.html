@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://zgjjj.github.io">
   <title>Nim博弈 学习报告 | zgjjj的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Nim取石子游戏甲，乙两个人玩Nim取石子游戏。nim游戏的规则是这样的：地上有n堆石子（每堆石子数量小于10000），每人每次可从任意一堆石子里取出任意多枚石子扔掉，可以取完，不能不取。每次只能从一堆里取。最后没石子可取的人就输了。假如甲是先手，且告诉你这n堆石子的数量，他想知道是否存在先手必胜的策略。 结论Nim博弈先手必胜，当且仅当：$$XOR_{a_1}^{a_n}=0$$ 证明（此部分搬">
+  <meta name="description" content="Nim取石子游戏甲，乙两个人玩Nim取石子游戏。nim游戏的规则是这样的：地上有n堆石子（每堆石子数量小于10000），每人每次可从任意一堆石子里取出任意多枚石子扔掉，可以取完，不能不取。每次只能从一堆里取。最后没石子可取的人就输了。假如甲是先手，且告诉你这n堆石子的数量，他想知道是否存在先手必胜的策略。">
 <meta name="keywords" content="学习报告,博弈论,Nim博弈">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nim博弈 学习报告">
 <meta property="og:url" content="http://zgjjj.github.io/2019/03/05/Nim博弈-学习报告/index.html">
 <meta property="og:site_name" content="zgjjj的博客">
-<meta property="og:description" content="Nim取石子游戏甲，乙两个人玩Nim取石子游戏。nim游戏的规则是这样的：地上有n堆石子（每堆石子数量小于10000），每人每次可从任意一堆石子里取出任意多枚石子扔掉，可以取完，不能不取。每次只能从一堆里取。最后没石子可取的人就输了。假如甲是先手，且告诉你这n堆石子的数量，他想知道是否存在先手必胜的策略。 结论Nim博弈先手必胜，当且仅当：$$XOR_{a_1}^{a_n}=0$$ 证明（此部分搬">
+<meta property="og:description" content="Nim取石子游戏甲，乙两个人玩Nim取石子游戏。nim游戏的规则是这样的：地上有n堆石子（每堆石子数量小于10000），每人每次可从任意一堆石子里取出任意多枚石子扔掉，可以取完，不能不取。每次只能从一堆里取。最后没石子可取的人就输了。假如甲是先手，且告诉你这n堆石子的数量，他想知道是否存在先手必胜的策略。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-05T09:04:03.490Z">
+<meta property="og:updated_time" content="2019-03-05T09:12:23.503Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nim博弈 学习报告">
-<meta name="twitter:description" content="Nim取石子游戏甲，乙两个人玩Nim取石子游戏。nim游戏的规则是这样的：地上有n堆石子（每堆石子数量小于10000），每人每次可从任意一堆石子里取出任意多枚石子扔掉，可以取完，不能不取。每次只能从一堆里取。最后没石子可取的人就输了。假如甲是先手，且告诉你这n堆石子的数量，他想知道是否存在先手必胜的策略。 结论Nim博弈先手必胜，当且仅当：$$XOR_{a_1}^{a_n}=0$$ 证明（此部分搬">
+<meta name="twitter:description" content="Nim取石子游戏甲，乙两个人玩Nim取石子游戏。nim游戏的规则是这样的：地上有n堆石子（每堆石子数量小于10000），每人每次可从任意一堆石子里取出任意多枚石子扔掉，可以取完，不能不取。每次只能从一堆里取。最后没石子可取的人就输了。假如甲是先手，且告诉你这n堆石子的数量，他想知道是否存在先手必胜的策略。">
   
     <link rel="alternative" href="/atom.xml" title="zgjjj的博客" type="application/atom+xml">
   
@@ -180,6 +180,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Nim取石子游戏"><a href="#Nim取石子游戏" class="headerlink" title="Nim取石子游戏"></a>Nim取石子游戏</h1><p>甲，乙两个人玩Nim取石子游戏。<br>nim游戏的规则是这样的：地上有n堆石子（每堆石子数量小于10000），每人每次可从任意一堆石子里取出任意多枚石子扔掉，可以取完，不能不取。每次只能从一堆里取。最后没石子可取的人就输了。假如甲是先手，且告诉你这n堆石子的数量，他想知道是否存在先手必胜的策略。</p>
+<a id="more"></a>
 <h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>Nim博弈先手必胜，当且仅当：<br>$$XOR_{a_1}^{a_n}=0$$</p>
 <h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><p>（此部分搬运 <a href="https://www.luogu.org/space/show?uid=88804" target="_blank" rel="noopener">y2823774827y</a>的题解，在此对原作者表示敬意）</p>
 <p>用比较通俗的方式讲一下吧： 题目本意是给出n堆石子，轮流在其中一堆去任意个，谁不能去谁就输。</p>
