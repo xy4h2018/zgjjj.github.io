@@ -6,22 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://zgjjj.github.io">
-  <title>矩阵快速幂 学习报告 | zgjjj的博客</title>
+  <title>Tag: Nim博弈 | zgjjj的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="矩阵的存储为方便编写函数，我们使用一个结构体Mat来存储一个矩阵。 同时可以构造函数使矩阵元素的初始值为0。 1234struct mat &amp;#123;    int m[N][N];//N视情况而定    mat()&amp;#123;memset(m,0,sizeof(m));&amp;#125;&amp;#125;">
-<meta name="keywords" content="学习报告,矩阵快速幂">
-<meta property="og:type" content="article">
-<meta property="og:title" content="矩阵快速幂 学习报告">
-<meta property="og:url" content="http://zgjjj.github.io/2019/03/05/矩阵快速幂-学习报告/index.html">
+  <meta name="description" content="zgjjj的博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="zgjjj的博客">
+<meta property="og:url" content="http://zgjjj.github.io/tags/Nim博弈/index.html">
 <meta property="og:site_name" content="zgjjj的博客">
-<meta property="og:description" content="矩阵的存储为方便编写函数，我们使用一个结构体Mat来存储一个矩阵。 同时可以构造函数使矩阵元素的初始值为0。 1234struct mat &amp;#123;    int m[N][N];//N视情况而定    mat()&amp;#123;memset(m,0,sizeof(m));&amp;#125;&amp;#125;">
+<meta property="og:description" content="zgjjj的博客">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="file:///C:/Users/zgjjj/AppData/Local/Temp/SGPicFaceTpBq/3572/0065A738.png">
-<meta property="og:updated_time" content="2019-03-05T08:55:20.910Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="矩阵快速幂 学习报告">
-<meta name="twitter:description" content="矩阵的存储为方便编写函数，我们使用一个结构体Mat来存储一个矩阵。 同时可以构造函数使矩阵元素的初始值为0。 1234struct mat &amp;#123;    int m[N][N];//N视情况而定    mat()&amp;#123;memset(m,0,sizeof(m));&amp;#125;&amp;#125;">
-<meta name="twitter:image" content="file:///C:/Users/zgjjj/AppData/Local/Temp/SGPicFaceTpBq/3572/0065A738.png">
+<meta name="twitter:title" content="zgjjj的博客">
+<meta name="twitter:description" content="zgjjj的博客">
   
     <link rel="alternative" href="/atom.xml" title="zgjjj的博客" type="application/atom+xml">
   
@@ -161,62 +157,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-矩阵快速幂-学习报告" class="article article-type-post " itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      矩阵快速幂 学习报告
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/03/05/Nim博弈-学习报告/" class="archive-article-date">
+  	<time datetime="2019-03-05T08:56:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-05</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/03/05/Nim博弈-学习报告/">Nim博弈 学习报告</a>
     </h1>
   
 
-        
-        <a href="/2019/03/05/矩阵快速幂-学习报告/" class="archive-article-date">
-  	<time datetime="2019-03-05T08:20:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="矩阵的存储"><a href="#矩阵的存储" class="headerlink" title="矩阵的存储"></a>矩阵的存储</h1><p>为方便编写函数，我们使用一个<strong>结构体</strong><code>Mat</code>来存储一个矩阵。</p>
-<p>同时可以构造函数使矩阵元素的初始值为0。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">mat</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> m[N][N];<span class="comment">//N视情况而定</span></span><br><span class="line">    mat()&#123;<span class="built_in">memset</span>(m,<span class="number">0</span>,<span class="keyword">sizeof</span>(m));&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h1 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>对于大小为$n\times m​$的矩阵$A​$和大小为$n\times k​$的矩阵$B​$，规定$C=A\times B​$，其中：<br>$$C_{i,j}=\sum\limits_{k=1}^{n}A_{i,p}*B_{p,j}​$$</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">mat <span class="title">mul</span><span class="params">(mat a, mat b)</span> </span>&#123;</span><br><span class="line">    mat ans;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">1</span> ; j &lt;= n ; j++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> k = <span class="number">1</span> ; k &lt;= n ; k++) &#123;</span><br><span class="line">                ans.m[i][j] += a.m[i][k] * b.m[k][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="普通快速幂"><a href="#普通快速幂" class="headerlink" title="普通快速幂"></a>普通快速幂</h1><p>这里只给出实现。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">power</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">1</span>;<span class="comment">//一定要记住初始值为1</span></span><br><span class="line">    <span class="keyword">while</span>(b) &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>) ans = ans * a;</span><br><span class="line">        a*=a;</span><br><span class="line">        b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="矩阵快速幂"><a href="#矩阵快速幂" class="headerlink" title="矩阵快速幂"></a>矩阵快速幂</h1><h2 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h2><p>常用于<strong>加速递推</strong>。</p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>我们结合普通快速幂的思想，将元素换为矩阵，不难得到下面的代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">mat <span class="title">power</span><span class="params">(mat a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    mat ans;<span class="comment">//这里的ans已经初始化，具体看下文</span></span><br><span class="line">    <span class="keyword">while</span>(b) &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>) ans = mul(ans, a);</span><br><span class="line">        a = mul(a, a);</span><br><span class="line">        b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="看到代码里的注释了"><a href="#看到代码里的注释了" class="headerlink" title="看到代码里的注释了?"></a>看到代码里的注释了<img src="file:///C:\Users\zgjjj\AppData\Local\Temp\SGPicFaceTpBq\3572\0065A738.png" alt="img">?</h3><p>矩阵$ans$同样是要初始化的，不同于普通快速幂，这里的$ans$应初始化为<strong>单位矩阵</strong>。<del>（不知道是啥的，百度去吧）</del><del>(应该没人不知道吧…)</del></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i++) &#123;</span><br><span class="line">    ans.m[i][i] = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们往往把它封装在<code>init()</code>里面，因为在数列递推问题中，要初始化的还有$base$矩阵。</p>
-<h1 id="不同的写法"><a href="#不同的写法" class="headerlink" title="不同的写法"></a>不同的写法</h1><p><del>（打<code>mul()</code>太累了？）</del>，我们还可以在结构体内重载<code>*</code><del>和*=</del>运算符。没什么大的区别。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">mat</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> m[N][N];</span><br><span class="line">    mat()&#123;<span class="built_in">memset</span>(m,<span class="number">0</span>,<span class="keyword">sizeof</span>(m));&#125;</span><br><span class="line">    mat <span class="keyword">operator</span> * (<span class="keyword">const</span> mat &amp;a) <span class="keyword">const</span> &#123;</span><br><span class="line">        mat ans;</span><br><span class="line">    	<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i++) &#123;</span><br><span class="line">        	<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">1</span> ; j &lt;= n ; j++) &#123;</span><br><span class="line">        	    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> k = <span class="number">1</span> ; k &lt;= n ; k++) &#123;</span><br><span class="line">        	        ans.m[i][j] += m[i][k] * a.m[k][j];</span><br><span class="line">        	    &#125;</span><br><span class="line">        	&#125;</span><br><span class="line">   		&#125;</span><br><span class="line">    	<span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>那么，快速幂中的<code>mul()</code>就要换成<code>*</code>。</p>
-<h1 id="关于数列加速递推"><a href="#关于数列加速递推" class="headerlink" title="关于数列加速递推"></a>关于数列加速递推</h1><h2 id="构造矩阵"><a href="#构造矩阵" class="headerlink" title="构造矩阵"></a>构造矩阵</h2><p><del>我讲不来怎么构造</del></p>
-<p>为了使用矩阵快速幂，我们需要构造一个矩阵<code>base</code>，使得每<strong>乘</strong>一次<code>base</code>，就可以得到数列的下一项。</p>
-<h2 id="需要注意"><a href="#需要注意" class="headerlink" title="需要注意"></a>需要注意</h2><p>我们在矩阵快速幂的时候，指数的值应当是<code>n-2</code>而不是<code>n</code>。</p>
-<h2 id="快在哪？"><a href="#快在哪？" class="headerlink" title="快在哪？"></a>快在哪？</h2><p><del>快速幂O(logn)递推O(n)你说快在哪？</del></p>
-<h1 id="一些需要注意的地方"><a href="#一些需要注意的地方" class="headerlink" title="一些需要注意的地方"></a>一些需要注意的地方</h1><p>（感谢xht37帮我Debug…）</p>
-<ul>
-<li>在<strong>可以</strong>模<del>膜</del>的地方都模一下，可以防止爆精度<del>涨rp</del>。</li>
-<li><strong>欧拉定理</strong>不能运用在矩阵快速幂中，模数是质数也不行（用在普通快速幂中也没觉得快多少？</li>
-<li>数据类型一定要一致<del>不然会爆零</del></li>
-</ul>
-<p>差不多就这些了。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -226,158 +196,31 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">矩阵快速幂</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">博弈论</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nim博弈</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://zgjjj.github.io/2019/03/05/矩阵快速幂-学习报告/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/03/05/Nim博弈-学习报告/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Nim博弈 学习报告
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/02/26/位运算与二进制状态压缩-学习报告/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">位运算与二进制状态压缩 学习报告</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#矩阵的存储"><span class="toc-number">1.</span> <span class="toc-text">矩阵的存储</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#矩阵乘法"><span class="toc-number">2.</span> <span class="toc-text">矩阵乘法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义"><span class="toc-number">2.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">2.2.</span> <span class="toc-text">代码实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#普通快速幂"><span class="toc-number">3.</span> <span class="toc-text">普通快速幂</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#矩阵快速幂"><span class="toc-number">4.</span> <span class="toc-text">矩阵快速幂</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#意义"><span class="toc-number">4.1.</span> <span class="toc-text">意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-number">4.2.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#看到代码里的注释了"><span class="toc-number">4.2.1.</span> <span class="toc-text">看到代码里的注释了?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#不同的写法"><span class="toc-number">5.</span> <span class="toc-text">不同的写法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于数列加速递推"><span class="toc-number">6.</span> <span class="toc-text">关于数列加速递推</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#构造矩阵"><span class="toc-number">6.1.</span> <span class="toc-text">构造矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#需要注意"><span class="toc-number">6.2.</span> <span class="toc-text">需要注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快在哪？"><span class="toc-number">6.3.</span> <span class="toc-text">快在哪？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些需要注意的地方"><span class="toc-number">7.</span> <span class="toc-text">一些需要注意的地方</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
-
-
-  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-
-if(true){
-	var gitalk = new Gitalk({
-  	clientID: '236827e23a5ecfc3da18',
-  	clientSecret: '5ac7771c2376137b31f36998fb51d7944403ad5b',
-  	repo: 'zgjjj.github.io',
-  	owner: 'zgjjj',
-  	admin: ['zgjjj'],
-  	id: 'Tue Mar 05 2019 16:20:09 GMT+0800',
-  	distractionFreeMode: 'true'
-})
-gitalk.render('gitalk-container') 
-}
-</script>
-  
           </div>
         </div>
       </div>
@@ -398,9 +241,9 @@ gitalk.render('gitalk-container')
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: false,

@@ -6,22 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://zgjjj.github.io">
-  <title>矩阵快速幂 学习报告 | zgjjj的博客</title>
+  <title>Nim博弈 学习报告 | zgjjj的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="矩阵的存储为方便编写函数，我们使用一个结构体Mat来存储一个矩阵。 同时可以构造函数使矩阵元素的初始值为0。 1234struct mat &amp;#123;    int m[N][N];//N视情况而定    mat()&amp;#123;memset(m,0,sizeof(m));&amp;#125;&amp;#125;">
-<meta name="keywords" content="学习报告,矩阵快速幂">
+  <meta name="description" content="Nim取石子游戏甲，乙两个人玩Nim取石子游戏。nim游戏的规则是这样的：地上有n堆石子（每堆石子数量小于10000），每人每次可从任意一堆石子里取出任意多枚石子扔掉，可以取完，不能不取。每次只能从一堆里取。最后没石子可取的人就输了。假如甲是先手，且告诉你这n堆石子的数量，他想知道是否存在先手必胜的策略。 结论Nim博弈先手必胜，当且仅当：$$XOR_{a_1}^{a_n}=0$$ 证明（此部分搬">
+<meta name="keywords" content="学习报告,博弈论,Nim博弈">
 <meta property="og:type" content="article">
-<meta property="og:title" content="矩阵快速幂 学习报告">
-<meta property="og:url" content="http://zgjjj.github.io/2019/03/05/矩阵快速幂-学习报告/index.html">
+<meta property="og:title" content="Nim博弈 学习报告">
+<meta property="og:url" content="http://zgjjj.github.io/2019/03/05/Nim博弈-学习报告/index.html">
 <meta property="og:site_name" content="zgjjj的博客">
-<meta property="og:description" content="矩阵的存储为方便编写函数，我们使用一个结构体Mat来存储一个矩阵。 同时可以构造函数使矩阵元素的初始值为0。 1234struct mat &amp;#123;    int m[N][N];//N视情况而定    mat()&amp;#123;memset(m,0,sizeof(m));&amp;#125;&amp;#125;">
+<meta property="og:description" content="Nim取石子游戏甲，乙两个人玩Nim取石子游戏。nim游戏的规则是这样的：地上有n堆石子（每堆石子数量小于10000），每人每次可从任意一堆石子里取出任意多枚石子扔掉，可以取完，不能不取。每次只能从一堆里取。最后没石子可取的人就输了。假如甲是先手，且告诉你这n堆石子的数量，他想知道是否存在先手必胜的策略。 结论Nim博弈先手必胜，当且仅当：$$XOR_{a_1}^{a_n}=0$$ 证明（此部分搬">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="file:///C:/Users/zgjjj/AppData/Local/Temp/SGPicFaceTpBq/3572/0065A738.png">
-<meta property="og:updated_time" content="2019-03-05T08:55:20.910Z">
+<meta property="og:updated_time" content="2019-03-05T09:04:03.490Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="矩阵快速幂 学习报告">
-<meta name="twitter:description" content="矩阵的存储为方便编写函数，我们使用一个结构体Mat来存储一个矩阵。 同时可以构造函数使矩阵元素的初始值为0。 1234struct mat &amp;#123;    int m[N][N];//N视情况而定    mat()&amp;#123;memset(m,0,sizeof(m));&amp;#125;&amp;#125;">
-<meta name="twitter:image" content="file:///C:/Users/zgjjj/AppData/Local/Temp/SGPicFaceTpBq/3572/0065A738.png">
+<meta name="twitter:title" content="Nim博弈 学习报告">
+<meta name="twitter:description" content="Nim取石子游戏甲，乙两个人玩Nim取石子游戏。nim游戏的规则是这样的：地上有n堆石子（每堆石子数量小于10000），每人每次可从任意一堆石子里取出任意多枚石子扔掉，可以取完，不能不取。每次只能从一堆里取。最后没石子可取的人就输了。假如甲是先手，且告诉你这n堆石子的数量，他想知道是否存在先手必胜的策略。 结论Nim博弈先手必胜，当且仅当：$$XOR_{a_1}^{a_n}=0$$ 证明（此部分搬">
   
     <link rel="alternative" href="/atom.xml" title="zgjjj的博客" type="application/atom+xml">
   
@@ -161,54 +159,48 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-矩阵快速幂-学习报告" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-Nim博弈-学习报告" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      矩阵快速幂 学习报告
+      Nim博弈 学习报告
     </h1>
   
 
         
-        <a href="/2019/03/05/矩阵快速幂-学习报告/" class="archive-article-date">
-  	<time datetime="2019-03-05T08:20:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-05</time>
+        <a href="/2019/03/05/Nim博弈-学习报告/" class="archive-article-date">
+  	<time datetime="2019-03-05T08:56:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="矩阵的存储"><a href="#矩阵的存储" class="headerlink" title="矩阵的存储"></a>矩阵的存储</h1><p>为方便编写函数，我们使用一个<strong>结构体</strong><code>Mat</code>来存储一个矩阵。</p>
-<p>同时可以构造函数使矩阵元素的初始值为0。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">mat</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> m[N][N];<span class="comment">//N视情况而定</span></span><br><span class="line">    mat()&#123;<span class="built_in">memset</span>(m,<span class="number">0</span>,<span class="keyword">sizeof</span>(m));&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h1 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>对于大小为$n\times m​$的矩阵$A​$和大小为$n\times k​$的矩阵$B​$，规定$C=A\times B​$，其中：<br>$$C_{i,j}=\sum\limits_{k=1}^{n}A_{i,p}*B_{p,j}​$$</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">mat <span class="title">mul</span><span class="params">(mat a, mat b)</span> </span>&#123;</span><br><span class="line">    mat ans;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">1</span> ; j &lt;= n ; j++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> k = <span class="number">1</span> ; k &lt;= n ; k++) &#123;</span><br><span class="line">                ans.m[i][j] += a.m[i][k] * b.m[k][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="普通快速幂"><a href="#普通快速幂" class="headerlink" title="普通快速幂"></a>普通快速幂</h1><p>这里只给出实现。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">power</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">1</span>;<span class="comment">//一定要记住初始值为1</span></span><br><span class="line">    <span class="keyword">while</span>(b) &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>) ans = ans * a;</span><br><span class="line">        a*=a;</span><br><span class="line">        b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="矩阵快速幂"><a href="#矩阵快速幂" class="headerlink" title="矩阵快速幂"></a>矩阵快速幂</h1><h2 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h2><p>常用于<strong>加速递推</strong>。</p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>我们结合普通快速幂的思想，将元素换为矩阵，不难得到下面的代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">mat <span class="title">power</span><span class="params">(mat a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    mat ans;<span class="comment">//这里的ans已经初始化，具体看下文</span></span><br><span class="line">    <span class="keyword">while</span>(b) &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>) ans = mul(ans, a);</span><br><span class="line">        a = mul(a, a);</span><br><span class="line">        b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="看到代码里的注释了"><a href="#看到代码里的注释了" class="headerlink" title="看到代码里的注释了?"></a>看到代码里的注释了<img src="file:///C:\Users\zgjjj\AppData\Local\Temp\SGPicFaceTpBq\3572\0065A738.png" alt="img">?</h3><p>矩阵$ans$同样是要初始化的，不同于普通快速幂，这里的$ans$应初始化为<strong>单位矩阵</strong>。<del>（不知道是啥的，百度去吧）</del><del>(应该没人不知道吧…)</del></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i++) &#123;</span><br><span class="line">    ans.m[i][i] = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们往往把它封装在<code>init()</code>里面，因为在数列递推问题中，要初始化的还有$base$矩阵。</p>
-<h1 id="不同的写法"><a href="#不同的写法" class="headerlink" title="不同的写法"></a>不同的写法</h1><p><del>（打<code>mul()</code>太累了？）</del>，我们还可以在结构体内重载<code>*</code><del>和*=</del>运算符。没什么大的区别。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">mat</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> m[N][N];</span><br><span class="line">    mat()&#123;<span class="built_in">memset</span>(m,<span class="number">0</span>,<span class="keyword">sizeof</span>(m));&#125;</span><br><span class="line">    mat <span class="keyword">operator</span> * (<span class="keyword">const</span> mat &amp;a) <span class="keyword">const</span> &#123;</span><br><span class="line">        mat ans;</span><br><span class="line">    	<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i++) &#123;</span><br><span class="line">        	<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">1</span> ; j &lt;= n ; j++) &#123;</span><br><span class="line">        	    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> k = <span class="number">1</span> ; k &lt;= n ; k++) &#123;</span><br><span class="line">        	        ans.m[i][j] += m[i][k] * a.m[k][j];</span><br><span class="line">        	    &#125;</span><br><span class="line">        	&#125;</span><br><span class="line">   		&#125;</span><br><span class="line">    	<span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>那么，快速幂中的<code>mul()</code>就要换成<code>*</code>。</p>
-<h1 id="关于数列加速递推"><a href="#关于数列加速递推" class="headerlink" title="关于数列加速递推"></a>关于数列加速递推</h1><h2 id="构造矩阵"><a href="#构造矩阵" class="headerlink" title="构造矩阵"></a>构造矩阵</h2><p><del>我讲不来怎么构造</del></p>
-<p>为了使用矩阵快速幂，我们需要构造一个矩阵<code>base</code>，使得每<strong>乘</strong>一次<code>base</code>，就可以得到数列的下一项。</p>
-<h2 id="需要注意"><a href="#需要注意" class="headerlink" title="需要注意"></a>需要注意</h2><p>我们在矩阵快速幂的时候，指数的值应当是<code>n-2</code>而不是<code>n</code>。</p>
-<h2 id="快在哪？"><a href="#快在哪？" class="headerlink" title="快在哪？"></a>快在哪？</h2><p><del>快速幂O(logn)递推O(n)你说快在哪？</del></p>
-<h1 id="一些需要注意的地方"><a href="#一些需要注意的地方" class="headerlink" title="一些需要注意的地方"></a>一些需要注意的地方</h1><p>（感谢xht37帮我Debug…）</p>
-<ul>
-<li>在<strong>可以</strong>模<del>膜</del>的地方都模一下，可以防止爆精度<del>涨rp</del>。</li>
-<li><strong>欧拉定理</strong>不能运用在矩阵快速幂中，模数是质数也不行（用在普通快速幂中也没觉得快多少？</li>
-<li>数据类型一定要一致<del>不然会爆零</del></li>
-</ul>
-<p>差不多就这些了。</p>
+        <h1 id="Nim取石子游戏"><a href="#Nim取石子游戏" class="headerlink" title="Nim取石子游戏"></a>Nim取石子游戏</h1><p>甲，乙两个人玩Nim取石子游戏。<br>nim游戏的规则是这样的：地上有n堆石子（每堆石子数量小于10000），每人每次可从任意一堆石子里取出任意多枚石子扔掉，可以取完，不能不取。每次只能从一堆里取。最后没石子可取的人就输了。假如甲是先手，且告诉你这n堆石子的数量，他想知道是否存在先手必胜的策略。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>Nim博弈先手必胜，当且仅当：<br>$$XOR_{a_1}^{a_n}=0$$</p>
+<h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><p>（此部分搬运 <a href="https://www.luogu.org/space/show?uid=88804" target="_blank" rel="noopener">y2823774827y</a>的题解，在此对原作者表示敬意）</p>
+<p>用比较通俗的方式讲一下吧： 题目本意是给出n堆石子，轮流在其中一堆去任意个，谁不能去谁就输。</p>
+<p>思路：证明所有石子异或和为0则先手必输</p>
+<p>证明：</p>
+<ol>
+<li><p>反正最终情况就是每堆都为0，先手必输，所以我们考虑怎么把情况转换到这里。</p>
+</li>
+<li><p>如果异或和的最高位为i，则有一堆石子第i为为1（不然怎么会有i位）</p>
+</li>
+<li><p>设A1就为那堆石子，其他堆石子异或和设为x，总异或和设为k，则 A1 xor x=k，把A1变成A1 xor k，那么后手面对的则是（A1 xor k）xor x=0，</p>
+<p>举个例子:11001 xor 11100=101，则有（11001 xor 101）xor 11100=0</p>
+</li>
+<li><p>如果现在的异或和已经为0了（不为最终情况），那么怎么转换异或和都不能为0</p>
+</li>
+<li><p>好，我们根据3 4点得出：如果先手异或和不为0，可以一步让后手的情况为异或和为0；如果先手异或和为0，那么后手异或和就不为0</p>
+</li>
+<li><p>终于开始进行游戏了，如果现在先手面对的情况异或和不为0，则一直让后手异或和为0，最后面对最终情况，后手输，则先手赢；如果先手面对的情况异或和为0，后手则赢</p>
+</li>
+</ol>
+<h1 id="SG函数与ICG游戏"><a href="#SG函数与ICG游戏" class="headerlink" title="SG函数与ICG游戏"></a>SG函数与ICG游戏</h1><p>（占坑，学了再写）</p>
 
       
 
@@ -226,7 +218,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">矩阵快速幂</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">博弈论</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nim博弈</a>
         		</li>
       		
 		</ul>
@@ -282,7 +278,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://zgjjj.github.io/2019/03/05/矩阵快速幂-学习报告/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://zgjjj.github.io/2019/03/05/Nim博弈-学习报告/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -296,18 +292,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/03/05/Nim博弈-学习报告/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Nim博弈 学习报告
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/02/26/位运算与二进制状态压缩-学习报告/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">位运算与二进制状态压缩 学习报告</div>
+    <a href="/2019/03/05/矩阵快速幂-学习报告/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">矩阵快速幂 学习报告</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -334,7 +321,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#矩阵的存储"><span class="toc-number">1.</span> <span class="toc-text">矩阵的存储</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#矩阵乘法"><span class="toc-number">2.</span> <span class="toc-text">矩阵乘法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义"><span class="toc-number">2.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">2.2.</span> <span class="toc-text">代码实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#普通快速幂"><span class="toc-number">3.</span> <span class="toc-text">普通快速幂</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#矩阵快速幂"><span class="toc-number">4.</span> <span class="toc-text">矩阵快速幂</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#意义"><span class="toc-number">4.1.</span> <span class="toc-text">意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-number">4.2.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#看到代码里的注释了"><span class="toc-number">4.2.1.</span> <span class="toc-text">看到代码里的注释了?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#不同的写法"><span class="toc-number">5.</span> <span class="toc-text">不同的写法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于数列加速递推"><span class="toc-number">6.</span> <span class="toc-text">关于数列加速递推</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#构造矩阵"><span class="toc-number">6.1.</span> <span class="toc-text">构造矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#需要注意"><span class="toc-number">6.2.</span> <span class="toc-text">需要注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快在哪？"><span class="toc-number">6.3.</span> <span class="toc-text">快在哪？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些需要注意的地方"><span class="toc-number">7.</span> <span class="toc-text">一些需要注意的地方</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Nim取石子游戏"><span class="toc-number">1.</span> <span class="toc-text">Nim取石子游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#结论"><span class="toc-number">1.1.</span> <span class="toc-text">结论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#证明"><span class="toc-number">1.2.</span> <span class="toc-text">证明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SG函数与ICG游戏"><span class="toc-number">2.</span> <span class="toc-text">SG函数与ICG游戏</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -371,7 +358,7 @@ if(true){
   	repo: 'zgjjj.github.io',
   	owner: 'zgjjj',
   	admin: ['zgjjj'],
-  	id: 'Tue Mar 05 2019 16:20:09 GMT+0800',
+  	id: 'Tue Mar 05 2019 16:56:50 GMT+0800',
   	distractionFreeMode: 'true'
 })
 gitalk.render('gitalk-container') 

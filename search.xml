@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Nim博弈 学习报告]]></title>
+    <url>%2F2019%2F03%2F05%2FNim%E5%8D%9A%E5%BC%88-%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%2F</url>
+    <content type="text"><![CDATA[Nim取石子游戏甲，乙两个人玩Nim取石子游戏。nim游戏的规则是这样的：地上有n堆石子（每堆石子数量小于10000），每人每次可从任意一堆石子里取出任意多枚石子扔掉，可以取完，不能不取。每次只能从一堆里取。最后没石子可取的人就输了。假如甲是先手，且告诉你这n堆石子的数量，他想知道是否存在先手必胜的策略。 结论Nim博弈先手必胜，当且仅当：$$XOR_{a_1}^{a_n}=0$$ 证明（此部分搬运 y2823774827y的题解，在此对原作者表示敬意） 用比较通俗的方式讲一下吧： 题目本意是给出n堆石子，轮流在其中一堆去任意个，谁不能去谁就输。 思路：证明所有石子异或和为0则先手必输 证明： 反正最终情况就是每堆都为0，先手必输，所以我们考虑怎么把情况转换到这里。 如果异或和的最高位为i，则有一堆石子第i为为1（不然怎么会有i位） 设A1就为那堆石子，其他堆石子异或和设为x，总异或和设为k，则 A1 xor x=k，把A1变成A1 xor k，那么后手面对的则是（A1 xor k）xor x=0， 举个例子:11001 xor 11100=101，则有（11001 xor 101）xor 11100=0 如果现在的异或和已经为0了（不为最终情况），那么怎么转换异或和都不能为0 好，我们根据3 4点得出：如果先手异或和不为0，可以一步让后手的情况为异或和为0；如果先手异或和为0，那么后手异或和就不为0 终于开始进行游戏了，如果现在先手面对的情况异或和不为0，则一直让后手异或和为0，最后面对最终情况，后手输，则先手赢；如果先手面对的情况异或和为0，后手则赢 SG函数与ICG游戏（占坑，学了再写）]]></content>
+      <tags>
+        <tag>学习报告</tag>
+        <tag>博弈论</tag>
+        <tag>Nim博弈</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[矩阵快速幂 学习报告]]></title>
     <url>%2F2019%2F03%2F05%2F%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82-%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%2F</url>
     <content type="text"><![CDATA[矩阵的存储为方便编写函数，我们使用一个结构体Mat来存储一个矩阵。 同时可以构造函数使矩阵元素的初始值为0。 1234struct mat &#123; int m[N][N];//N视情况而定 mat()&#123;memset(m,0,sizeof(m));&#125;&#125; 矩阵乘法定义对于大小为$n\times m​$的矩阵$A​$和大小为$n\times k​$的矩阵$B​$，规定$C=A\times B​$，其中：$$C_{i,j}=\sum\limits_{k=1}^{n}A_{i,p}*B_{p,j}​$$ 代码实现1234567891011mat mul(mat a, mat b) &#123; mat ans; for(register int i = 1 ; i &lt;= n ; i++) &#123; for(register int j = 1 ; j &lt;= n ; j++) &#123; for(register int k = 1 ; k &lt;= n ; k++) &#123; ans.m[i][j] += a.m[i][k] * b.m[k][j]; &#125; &#125; &#125; return ans;&#125; 普通快速幂这里只给出实现。 123456789int power(int a, int b) &#123; int ans = 1;//一定要记住初始值为1 while(b) &#123; if(b&amp;1) ans = ans * a; a*=a; b&gt;&gt;=1; &#125; return ans;&#125; 矩阵快速幂意义常用于加速递推。 实现我们结合普通快速幂的思想，将元素换为矩阵，不难得到下面的代码： 123456789mat power(mat a, int b) &#123; mat ans;//这里的ans已经初始化，具体看下文 while(b) &#123; if(b&amp;1) ans = mul(ans, a); a = mul(a, a); b&gt;&gt;=1; &#125; return ans;&#125; 看到代码里的注释了?矩阵$ans$同样是要初始化的，不同于普通快速幂，这里的$ans$应初始化为单位矩阵。（不知道是啥的，百度去吧）(应该没人不知道吧…) 123for(register int i = 1 ; i &lt;= n ; i++) &#123; ans.m[i][i] = 1;&#125; 我们往往把它封装在init()里面，因为在数列递推问题中，要初始化的还有$base$矩阵。 不同的写法（打mul()太累了？），我们还可以在结构体内重载*和*=运算符。没什么大的区别。 123456789101112131415struct mat &#123; int m[N][N]; mat()&#123;memset(m,0,sizeof(m));&#125; mat operator * (const mat &amp;a) const &#123; mat ans; for(register int i = 1 ; i &lt;= n ; i++) &#123; for(register int j = 1 ; j &lt;= n ; j++) &#123; for(register int k = 1 ; k &lt;= n ; k++) &#123; ans.m[i][j] += m[i][k] * a.m[k][j]; &#125; &#125; &#125; return ans; &#125;&#125; 那么，快速幂中的mul()就要换成*。 关于数列加速递推构造矩阵我讲不来怎么构造 为了使用矩阵快速幂，我们需要构造一个矩阵base，使得每乘一次base，就可以得到数列的下一项。 需要注意我们在矩阵快速幂的时候，指数的值应当是n-2而不是n。 快在哪？快速幂O(logn)递推O(n)你说快在哪？ 一些需要注意的地方（感谢xht37帮我Debug…） 在可以模膜的地方都模一下，可以防止爆精度涨rp。 欧拉定理不能运用在矩阵快速幂中，模数是质数也不行（用在普通快速幂中也没觉得快多少？ 数据类型一定要一致不然会爆零 差不多就这些了。]]></content>
@@ -87,9 +97,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[HBTSC 2019 任务清单]]></title>
+    <title><![CDATA[To Do List]]></title>
     <url>%2F2019%2F02%2F10%2FHBSTC-2019-%E4%BB%BB%E5%8A%A1%E6%B8%85%E5%8D%95%2F</url>
-    <content type="text"><![CDATA[显而易见搞不完 学习计划 数学 位运算（状压常用） 数论 欧拉函数 中国剩余定理 逆元线性递推 线性筛 裴蜀定理 基础BSGS 线代 矩阵求逆 矩阵快速幂 组合 Lucas定理 Catalan数 斯特林数 容斥 博弈论 Nim博弈 动态规划 记忆化搜索 区间DP 状压DP 斜率优化 搜索 双向BFS 迭代加深搜索 字符串 Hash KMP 数据结构 单调栈 单调队列 树状数组(可能依然不会) 带Lazy Tag的线段树 Treap 图论 LCA k短路（学不来） 强联通分量 Tarjan 二分图最大匹配 最小环（至少会一种求法吧？） 网络流(有时间再开) 优化及玄学？ 快读快写 模拟退火 离散化 离线（到底怎么搞啊） 复习计划 并查集 dfs bfs Dijkstra+Heap SPFA(能不用就不用) 手写qsort(用处不大?) 打表 二分板子 三分（有时间再） 二维前缀和&amp;差分 线性DP（多写题） 背包]]></content>
+    <content type="text"><![CDATA[显而易见搞不完 学习计划 数学 位运算（状压常用） 数论 欧拉函数 中国剩余定理 逆元线性递推 线性筛 裴蜀定理 基础BSGS 线代 矩阵求逆 矩阵快速幂 组合 Lucas定理 Catalan数 斯特林数 容斥 博弈论 Nim博弈 动态规划 记忆化搜索 区间DP 状压DP 斜率优化 搜索 双向BFS 迭代加深搜索 字符串 Hash KMP 数据结构 单调栈 单调队列 树状数组(可能依然不会) 带Lazy Tag的线段树 Treap 图论 LCA k短路（学不来） 强联通分量 Tarjan 二分图最大匹配 最小环（至少会一种求法吧？） 网络流(有时间再开) 优化及玄学？ 快读快写 模拟退火 离散化 离线（到底怎么搞啊） 复习计划 并查集 dfs bfs Dijkstra+Heap SPFA(能不用就不用) 手写qsort(用处不大?) 打表 二分板子 三分（有时间再） 二维前缀和&amp;差分 线性DP（多写题） 背包 杂项 Nim博弈学习报告补锅]]></content>
       <tags>
         <tag>复习计划</tag>
         <tag>学习计划</tag>
