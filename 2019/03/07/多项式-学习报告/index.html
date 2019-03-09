@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D220/sign=72d5ec35c8cec3fd8f3ea077e68ad4b6/f636afc379310a5578decf0dbc4543a983261054.jpg">
 <meta property="og:image" content="https://i.loli.net/2019/03/09/5c836112517bd.png">
-<meta property="og:updated_time" content="2019-03-09T09:31:01.962Z">
+<meta property="og:updated_time" content="2019-03-09T09:33:31.593Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多项式 学习报告">
 <meta name="twitter:description" content="看过期的luogu网课学会了多项式">
@@ -246,14 +246,14 @@
 <p>$\Rightarrow r= 1$</p>
 <p>那么，$r=1,\varphi=\frac{2\pi+k}{n}​$$k\in[0,n-1]\&amp; k\in\mathbb Z​$恰好是$x^n=1​$的$n​$个不同的解。</p>
 <h4 id="结合单位圆"><a href="#结合单位圆" class="headerlink" title="结合单位圆"></a>结合单位圆</h4><p><img src="https://i.loli.net/2019/03/09/5c836112517bd.png" alt=""></p>
-<p>很容易得到$n​$个单位根分别为$e^{\frac{2k\pi }{n}i},k\in[1,n-1]\&amp;k\in\mathbb Z​$</p>
-<p>记单位圆根$\mathbf \omega_n=e^{\frac{\omega\pi}{n}i}$,则$n$个单位根又可以写成${\mathbf \omega_n^k},k\in[1,n-1]\and k\in\mathbb Z$</p>
+<p>很容易得到$n$个单位根分别为$e^{\frac{2k\pi }{n}i}$，$k\in[1,n-1]\&amp;k\in\mathbb Z$</p>
+<p>记单位圆根$\mathbf \omega_n=e^{\frac{\omega\pi}{n}i}​$,则$n​$个单位根又可以写成${\mathbf \omega_n^k},k\in[1,n-1]\and k\in\mathbb Z​$</p>
 <h4 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h4><ol>
-<li>$\mathbf \omega_n^m=\mathbf \omega_{n/k}^{m/k}$</li>
-<li>$\mathbf \omega_n^2=\mathbf \omega_{n/2}$</li>
-<li>$\mathbf \omega_n^j=- \mathbf \omega_n^{j+n/2}$</li>
+<li>$\mathbf \omega_n^m=\mathbf \omega_{n/k}^{m/k}​$</li>
+<li>$\mathbf \omega_n^2=\mathbf \omega_{n/2}​$</li>
+<li>$\mathbf \omega_n^j=- \mathbf \omega_n^{j+n/2}​$</li>
 <li>$\sum\limits_{k=0}^{n-1}\mathbf \omega_n^{kt}={\begin{cases} n,n\mid t\\0,n\nmid t \end{cases}}​$(可通过等比数列求和证明)</li>
-<li>$[n\mid t]=\frac{1}{n}\sum\limits_{j=0}^{n-1}\mathbf \omega_n^{tj}$(该性质是<strong>FFT</strong>的关键)</li>
+<li>$[n\mid t]=\frac{1}{n}\sum\limits_{j=0}^{n-1}\mathbf \omega_n^{tj}​$(该性质是<strong>FFT</strong>的关键)</li>
 </ol>
 <blockquote>
 <p><strong>性质5</strong>中，<strong>[条件判断句1]</strong>运算符返回值为<code>true</code>当且仅当条件判断句1为<strong>真</strong>。</p>
