@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D220/sign=72d5ec35c8cec3fd8f3ea077e68ad4b6/f636afc379310a5578decf0dbc4543a983261054.jpg">
 <meta property="og:image" content="https://i.loli.net/2019/03/09/5c836112517bd.png">
-<meta property="og:updated_time" content="2019-03-09T07:52:43.289Z">
+<meta property="og:updated_time" content="2019-03-09T07:55:51.466Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多项式 学习报告">
 <meta name="twitter:description" content="看过期的luogu网课学会了多项式">
@@ -271,6 +271,7 @@
 <p>$\quad =\sum\limits_{x=0}^{n-1} \sum\limits_{y=0}^{n-1}f[x]\times g[y]\times [n\mid x+y-z]​$</p>
 <p>$\quad =\sum\limits_{x=0}^{n-1} \sum\limits_{y=0}^{n-1}f[x]\times g[y]\times \frac{1}{n}\sum\limits_{t=0}^{n-1}\omega_n^{t(x+y-z)}​$</p>
 <p>$\quad = \frac{1}{n}\sum\limits_{t=0}^{n-1}\omega_n^{-tz}(\sum\limits_{x=0}^{n-1}{f[x]\times \omega_n^{tx}})(\sum\limits_{y=0}^{n-1}g[y]\times \omega_n^{ty})​$</p>
+<p>设$F[t] = \sum\limits _{x=0} ^{n-1} f[x]\times \omega_n^{tx},G[t] = \sum\limits_{y=0}^{n-1}g[x]\times \omega_n^{ty},H[t] = F[t]\times G[t]$</p>
 
       
 
