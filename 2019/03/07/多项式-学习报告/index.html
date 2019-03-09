@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D220/sign=72d5ec35c8cec3fd8f3ea077e68ad4b6/f636afc379310a5578decf0dbc4543a983261054.jpg">
 <meta property="og:image" content="https://i.loli.net/2019/03/09/5c836112517bd.png">
-<meta property="og:updated_time" content="2019-03-09T09:37:56.165Z">
+<meta property="og:updated_time" content="2019-03-09T09:46:33.693Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多项式 学习报告">
 <meta name="twitter:description" content="看过期的luogu网课学会了多项式">
@@ -274,20 +274,20 @@
 <p>由$f,g$计算$F,G$的过程被称为<strong>离散傅里叶变换</strong>(<strong>D</strong>iscrete <strong>F</strong>ourier <strong>T</strong>ransform)</p>
 <p>由$H计算h$的过程被称为<strong>离散傅里叶逆变换</strong>(<strong>I</strong>nverse <strong>D</strong>iscrete <strong>F</strong>ourier <strong>T</strong>ransform)</p>
 <p>两者过程相差无几。</p>
-<h2 id="DFT"><a href="#DFT" class="headerlink" title="DFT"></a>DFT</h2><p>现在仅考虑$n$为<strong>偶数</strong>的情况。</p>
-<p>给定$f$，计算$F[t] = \sum\limits_{x=0}^{n-1}f[x] \times \omega _n^{tx}$。</p>
-<p>设$f_a=f[2k],f_b=f[2k+1],k\in\mathbb N$</p>
+<h2 id="DFT"><a href="#DFT" class="headerlink" title="DFT"></a>DFT</h2><p>现在仅考虑$n​$为<strong>偶数</strong>的情况。</p>
+<p>给定$f​$，计算$F[t] = \sum\limits_{x=0}^{n-1}f[x] \times \omega _n^{tx}​$。</p>
+<p>设$f_a=f[2k],f_b=f[2k+1],k\in\mathbb N​$</p>
 <p>$$\therefore F_a[t] = \sum\limits_{a=0}^{n/2-1}f_a[a]\times \omega _{n/2}^{ta}​$$</p>
-<p>$$\therefore F_b[t] = \sum \limits_{b=0}^{ n/2-1}f_b[b]\times \omega_{n/2}^{tb}$$</p>
-<ol>
+<p>$$\therefore F_b[t] = \sum \limits_{b=0}^{ n/2-1}f_b[b]\times \omega_{n/2}^{tb}​$$</p>
+<ul>
 <li>当$j&lt;n/2时$</li>
-</ol>
-<p>$\therefore F[j] = \sum\limits_{a=0}^{n/2-1}\omega_n^{2a\times j}f[2a]+\sum\limits_{b=0}^{n/2-1}\omega_n^{(2b+1)\times j}f[2b+1]$</p>
+</ul>
+<p>$\therefore F[j] = \sum\limits_{a=0}^{n/2-1}\omega_n^{2a\times j}f[2a]+\sum\limits_{b=0}^{n/2-1}\omega_n^{(2b+1)\times j}f[2b+1]​$</p>
 <p>$\quad \quad\quad =\sum\limits_{a=0}^{n/2-1}\omega_{n/2}^{a\times j}f_a[a]+\omega_{n}^j \times \sum\limits_{b=0}^{n/2-1}\omega _{n/2}^{b\times j}f_b[b]​$</p>
 <p>$\quad \quad \quad =F_a[j]+\omega_n^jF_b[j]​$</p>
-<ol start="2">
+<ul>
 <li>当$j\geqslant n/2$时</li>
-</ol>
+</ul>
 <p>$\therefore F[j+n/2]=\sum\limits_{a=0}^{n/2-1}\omega_n^{2a\times (j+n/2)}f[2a]+\sum\limits_{b=0}^{n/2-1}\omega_n^{(2b+1)\times (j+n/2)}f[2b+1]​$</p>
 <p>$\quad \quad \quad \quad \quad   =\sum\limits_{a=0}^{n/2-1}\omega_{n/2}^{a}f_a[a]+\omega_n^{j+n/2}\times \sum\limits_{b=0}^{n/2-1}\omega_{n/2}^{b}f_b[b]$</p>
 <p>$\quad \quad \quad \quad \quad   =F_a[j]+\omega_n^{j+n/2}F_b[j]​$</p>
