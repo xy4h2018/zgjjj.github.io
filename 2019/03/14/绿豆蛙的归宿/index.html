@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="zgjjj的博客">
 <meta property="og:description" content="手感太差了手写队列都能出锅">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="c:/Users/zgjjj/AppData/Roaming/Typora/typora-user-images/1552554437139.png">
-<meta property="og:image" content="c:/Users/zgjjj/AppData/Roaming/Typora/typora-user-images/1552554450942.png">
-<meta property="og:updated_time" content="2019-03-14T09:23:58.598Z">
+<meta property="og:image" content="https://i.loli.net/2019/03/14/5c8a1e7749a30.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/14/5c8a1e774adbd.png">
+<meta property="og:updated_time" content="2019-03-14T09:27:43.004Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Luogu P4316 绿豆蛙的归宿 解题报告">
 <meta name="twitter:description" content="手感太差了手写队列都能出锅">
-<meta name="twitter:image" content="c:/Users/zgjjj/AppData/Roaming/Typora/typora-user-images/1552554437139.png">
+<meta name="twitter:image" content="https://i.loli.net/2019/03/14/5c8a1e7749a30.png">
   
     <link rel="alternative" href="/atom.xml" title="zgjjj的博客" type="application/atom+xml">
   
@@ -205,8 +205,8 @@
 <p>定义点$i$出度为<strong>k</strong>，对于每一个与点$i$联通的顶点$j$，根据期望的定义不难得出<strong>状态转移方程</strong>：<br>$$DP[i] = \frac{1}{k}\sum\limits_{dist_{i,j}\neq INF}(DP[j]+dist_{i,j})$$</p>
 <p>可以在对<strong>DAG拓扑排序</strong>的同时完成状态转移。</p>
 <h1 id="一些细节"><a href="#一些细节" class="headerlink" title="一些细节"></a>一些细节</h1><p>这道题挺坑的<del>明明是自己太菜了</del></p>
-<p><img src="C:\Users\zgjjj\AppData\Roaming\Typora\typora-user-images\1552554437139.png" alt="1552554437139"></p>
-<p><img src="C:\Users\zgjjj\AppData\Roaming\Typora\typora-user-images\1552554450942.png" alt="1552554450942"></p>
+<p><img src="https://i.loli.net/2019/03/14/5c8a1e7749a30.png" alt="1552554437139"></p>
+<p><img src="https://i.loli.net/2019/03/14/5c8a1e774adbd.png" alt="1552554450942"></p>
 <p>说一说写的过程中犯的一些错误。</p>
 <h2 id="关于存图"><a href="#关于存图" class="headerlink" title="关于存图"></a>关于存图</h2><p>因为从终点状态确定，所以需要从终点往起点转移。对应地，图也应该存反图。</p>
 <p><del>我一直以为反图只能跑多源一汇Dijkstra想不到还有这用处</del></p>
