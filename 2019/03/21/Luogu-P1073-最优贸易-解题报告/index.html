@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://zgjjj.github.io">
   <title>Luogu P1073 最优贸易 解题报告 | zgjjj的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="发一个自认为代码比较好看的双向SPFA 题目链接思路先正图跑一遍SPFA维护每个点对于采购价的最小值。 在数据读入时存反图，以$s$点为源点，再次跑一遍SPFA维护每个点对于卖出价的最小值。 根据题意描述，在存图的时候要注意判断是否为无向边。 要注意本题是点权而不是边权。 代码实现12345678910111213141516171819202122232425262728293031323334">
+  <meta name="description" content="发一个自认为代码比较好看的双向SPFA">
 <meta name="keywords" content="图论,SPFA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Luogu P1073 最优贸易 解题报告">
 <meta property="og:url" content="http://zgjjj.github.io/2019/03/21/Luogu-P1073-最优贸易-解题报告/index.html">
 <meta property="og:site_name" content="zgjjj的博客">
-<meta property="og:description" content="发一个自认为代码比较好看的双向SPFA 题目链接思路先正图跑一遍SPFA维护每个点对于采购价的最小值。 在数据读入时存反图，以$s$点为源点，再次跑一遍SPFA维护每个点对于卖出价的最小值。 根据题意描述，在存图的时候要注意判断是否为无向边。 要注意本题是点权而不是边权。 代码实现12345678910111213141516171819202122232425262728293031323334">
+<meta property="og:description" content="发一个自认为代码比较好看的双向SPFA">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-21T08:28:22.596Z">
+<meta property="og:updated_time" content="2019-03-21T08:33:10.389Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Luogu P1073 最优贸易 解题报告">
-<meta name="twitter:description" content="发一个自认为代码比较好看的双向SPFA 题目链接思路先正图跑一遍SPFA维护每个点对于采购价的最小值。 在数据读入时存反图，以$s$点为源点，再次跑一遍SPFA维护每个点对于卖出价的最小值。 根据题意描述，在存图的时候要注意判断是否为无向边。 要注意本题是点权而不是边权。 代码实现12345678910111213141516171819202122232425262728293031323334">
+<meta name="twitter:description" content="发一个自认为代码比较好看的双向SPFA">
   
     <link rel="alternative" href="/atom.xml" title="zgjjj的博客" type="application/atom+xml">
   
@@ -180,6 +180,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>发一个<del>自认为代码比较好看的</del>双向SPFA</p>
+<a id="more"></a>
 <h1 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://www.luogu.org/problemnew/show/P1073" target="_blank" rel="noopener">题目链接</a></h1><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>先正图跑一遍SPFA维护每个点对于采购价的最小值。</p>
 <p>在数据读入时存反图，以$s$点为源点，再次跑一遍SPFA维护每个点对于卖出价的最小值。</p>
 <p>根据题意描述，在存图的时候要注意判断是否为无向边。</p>
