@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Luogu P1073 最优贸易 解题报告]]></title>
+    <url>%2F2019%2F03%2F21%2FLuogu-P1073-%E6%9C%80%E4%BC%98%E8%B4%B8%E6%98%93-%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%2F</url>
+    <content type="text"><![CDATA[发一个自认为代码比较好看的双向SPFA 题目链接思路先正图跑一遍SPFA维护每个点对于采购价的最小值。 在数据读入时存反图，以$s$点为源点，再次跑一遍SPFA维护每个点对于卖出价的最小值。 根据题意描述，在存图的时候要注意判断是否为无向边。 要注意本题是点权而不是边权。 代码实现1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#include&lt;queue&gt;using std::queue;using std::min;using std::max;const int N = 1e5+6;const int M = 5e5+6;int head1[N], next1[M], ver1[M];int head2[N], next2[M], ver2[M];int cnt1 = 0, cnt2 = 0;int a[N];int d1[N], v1[N], d2[N], v2[N];int n, m;inline void add1(int x, int y) &#123; ver1[++cnt1] = y, next1[cnt1] = head1[x], head1[x] = cnt1;&#125;inline void add2(int x, int y) &#123; ver2[++cnt2] = y, next2[cnt2] = head2[x], head2[x] = cnt2;&#125;//最小值 inline void spfa1() &#123; queue&lt;int&gt; q1; memset(v1,0,sizeof(v1)); memset(d1,0x3f,sizeof(d1)); v1[1] = 1, d1[1] = a[1]; q1.push(1); while(!q1.empty()) &#123; int x = q1.front(); q1.pop(); v1[x] = 0; for(register int i = head1[x] ; i ; i = next1[i]) &#123; int y = ver1[i]; if(d1[y] &gt; min(d1[x], a[y])) &#123; d1[y] = min(d1[x], a[y]); if(!v1[y]) q1.push(y), v1[y] = 1; &#125; &#125; &#125;&#125;//最大值 inline void spfa2() &#123; queue&lt;int&gt; q2; memset(v2,0,sizeof(v2)); memset(d2,0,sizeof(d2)); v2[n] = 1, d2[n] = a[n]; q2.push(n); while(!q2.empty()) &#123; int x = q2.front(); q2.pop(); v2[x] = 0; for(register int i = head2[x] ; i ; i = next2[i]) &#123; int y = ver2[i]; if(d2[y] &lt; max(d2[x], a[y])) &#123; d2[y] = max(d2[x], a[y]); if(!v2[y]) q2.push(y), v2[y] = 1; &#125; &#125; &#125;&#125;int main() &#123; scanf("%d%d",&amp;n,&amp;m); for(register int i = 1 ; i &lt;= n ; i++) scanf("%d",&amp;a[i]); for(register int i = 1 ; i &lt;= m ; i++) &#123; int x, y, opt; scanf("%d%d%d",&amp;x,&amp;y,&amp;opt); if(opt == 1) &#123; add1(x,y); add2(y,x); &#125; if(opt == 2) &#123; add1(x,y); add1(y,x); add2(x,y); add2(y,x); &#125; &#125; spfa1(); spfa2(); int ans = 0; for(register int i = 1; i &lt;= n; i++) &#123; ans = max(ans,d2[i] - d1[i]); &#125; printf("%d",ans); return 0;&#125;]]></content>
+      <tags>
+        <tag>图论</tag>
+        <tag>SPFA</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[HBTSC 2019 爆零记]]></title>
     <url>%2F2019%2F03%2F14%2FHBTSC-2018-%E7%88%86%E9%9B%B6%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[占坑，稳坐rk inf。]]></content>

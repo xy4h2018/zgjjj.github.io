@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://zgjjj.github.io">
-  <title>Archives: 2019 | zgjjj的博客</title>
+  <title>Luogu P1073 最优贸易 解题报告 | zgjjj的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="zgjjj的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zgjjj的博客">
-<meta property="og:url" content="http://zgjjj.github.io/archives/2019/page/2/index.html">
+  <meta name="description" content="发一个自认为代码比较好看的双向SPFA 题目链接思路先正图跑一遍SPFA维护每个点对于采购价的最小值。 在数据读入时存反图，以$s$点为源点，再次跑一遍SPFA维护每个点对于卖出价的最小值。 根据题意描述，在存图的时候要注意判断是否为无向边。 要注意本题是点权而不是边权。 代码实现12345678910111213141516171819202122232425262728293031323334">
+<meta name="keywords" content="图论,SPFA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Luogu P1073 最优贸易 解题报告">
+<meta property="og:url" content="http://zgjjj.github.io/2019/03/21/Luogu-P1073-最优贸易-解题报告/index.html">
 <meta property="og:site_name" content="zgjjj的博客">
-<meta property="og:description" content="zgjjj的博客">
+<meta property="og:description" content="发一个自认为代码比较好看的双向SPFA 题目链接思路先正图跑一遍SPFA维护每个点对于采购价的最小值。 在数据读入时存反图，以$s$点为源点，再次跑一遍SPFA维护每个点对于卖出价的最小值。 根据题意描述，在存图的时候要注意判断是否为无向边。 要注意本题是点权而不是边权。 代码实现12345678910111213141516171819202122232425262728293031323334">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-21T08:28:22.596Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zgjjj的博客">
-<meta name="twitter:description" content="zgjjj的博客">
+<meta name="twitter:title" content="Luogu P1073 最优贸易 解题报告">
+<meta name="twitter:description" content="发一个自认为代码比较好看的双向SPFA 题目链接思路先正图跑一遍SPFA维护每个点对于采购价的最小值。 在数据读入时存反图，以$s$点为源点，再次跑一遍SPFA维护每个点对于卖出价的最小值。 根据题意描述，在存图的时候要注意判断是否为无向边。 要注意本题是点权而不是边权。 代码实现12345678910111213141516171819202122232425262728293031323334">
   
     <link rel="alternative" href="/atom.xml" title="zgjjj的博客" type="application/atom+xml">
   
@@ -157,452 +159,192 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Luogu-P1073-最优贸易-解题报告" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Luogu P1073 最优贸易 解题报告
+    </h1>
+  
+
+        
+        <a href="/2019/03/21/Luogu-P1073-最优贸易-解题报告/" class="archive-article-date">
+  	<time datetime="2019-03-21T08:20:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-21</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发一个<del>自认为代码比较好看的</del>双向SPFA</p>
+<h1 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://www.luogu.org/problemnew/show/P1073" target="_blank" rel="noopener">题目链接</a></h1><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>先正图跑一遍SPFA维护每个点对于采购价的最小值。</p>
+<p>在数据读入时存反图，以$s$点为源点，再次跑一遍SPFA维护每个点对于卖出价的最小值。</p>
+<p>根据题意描述，在存图的时候要注意判断是否为无向边。</p>
+<p>要注意本题是点权而不是边权。</p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">queue</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::min;</span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::max;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">6</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">5e5</span>+<span class="number">6</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> head1[N], next1[M], ver1[M];</span><br><span class="line"><span class="keyword">int</span> head2[N], next2[M], ver2[M];</span><br><span class="line"><span class="keyword">int</span> cnt1 = <span class="number">0</span>, cnt2 = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[N];</span><br><span class="line"><span class="keyword">int</span> d1[N], v1[N], d2[N], v2[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add1</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	ver1[++cnt1] = y, next1[cnt1] = head1[x], head1[x] = cnt1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add2</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	ver2[++cnt2] = y, next2[cnt2] = head2[x], head2[x] = cnt2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//最小值 </span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">spfa1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q1;</span><br><span class="line">	<span class="built_in">memset</span>(v1,<span class="number">0</span>,<span class="keyword">sizeof</span>(v1));</span><br><span class="line">	<span class="built_in">memset</span>(d1,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(d1));</span><br><span class="line">	v1[<span class="number">1</span>] = <span class="number">1</span>, d1[<span class="number">1</span>] = a[<span class="number">1</span>];</span><br><span class="line">	q1.push(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">while</span>(!q1.empty()) &#123;</span><br><span class="line">		<span class="keyword">int</span> x = q1.front();</span><br><span class="line">		q1.pop();</span><br><span class="line">		v1[x] = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = head1[x] ; i ; i = next1[i]) &#123;</span><br><span class="line">			<span class="keyword">int</span> y = ver1[i];</span><br><span class="line">			<span class="keyword">if</span>(d1[y] &gt; min(d1[x], a[y])) &#123;</span><br><span class="line">				d1[y] = min(d1[x], a[y]);</span><br><span class="line">				<span class="keyword">if</span>(!v1[y]) q1.push(y), v1[y] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//最大值 </span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">spfa2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q2;</span><br><span class="line">	<span class="built_in">memset</span>(v2,<span class="number">0</span>,<span class="keyword">sizeof</span>(v2));</span><br><span class="line">	<span class="built_in">memset</span>(d2,<span class="number">0</span>,<span class="keyword">sizeof</span>(d2));</span><br><span class="line">	v2[n] = <span class="number">1</span>, d2[n] = a[n];</span><br><span class="line">	q2.push(n);</span><br><span class="line">	<span class="keyword">while</span>(!q2.empty()) &#123;</span><br><span class="line">		<span class="keyword">int</span> x = q2.front();</span><br><span class="line">		q2.pop();</span><br><span class="line">		v2[x] = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = head2[x] ; i ; i = next2[i]) &#123;</span><br><span class="line">			<span class="keyword">int</span> y = ver2[i];</span><br><span class="line">			<span class="keyword">if</span>(d2[y] &lt; max(d2[x], a[y])) &#123;</span><br><span class="line">				d2[y] = max(d2[x], a[y]);</span><br><span class="line">				<span class="keyword">if</span>(!v2[y]) q2.push(y), v2[y] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i++) </span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> x, y, opt;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;opt);</span><br><span class="line">		<span class="keyword">if</span>(opt == <span class="number">1</span>) &#123;</span><br><span class="line">			add1(x,y);</span><br><span class="line">			add2(y,x);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(opt == <span class="number">2</span>) &#123;</span><br><span class="line">			add1(x,y);</span><br><span class="line">			add1(y,x);</span><br><span class="line">			add2(x,y);</span><br><span class="line">			add2(y,x);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	spfa1();</span><br><span class="line">	spfa2();</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		ans = max(ans,d2[i] - d1[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/13/组合数问题/" class="archive-article-date">
-  	<time datetime="2019-02-13T02:14:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/13/组合数问题/">Luogu P2822 组合数问题 解题报告</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">解题报告</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">图论</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">组合数学</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">组合数递推</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SPFA</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://zgjjj.github.io/2019/03/21/Luogu-P1073-最优贸易-解题报告/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/12/SuperGCD/" class="archive-article-date">
-  	<time datetime="2019-02-12T03:32:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-12</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/14/HBTSC-2018-爆零记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HBTSC 2019 爆零记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/12/SuperGCD/">SDOI2009 SuperGCD解题报告(瞎搞)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">解题报告</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">py3</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目链接"><span class="toc-number">1.</span> <span class="toc-text">题目链接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路"><span class="toc-number">2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码实现"><span class="toc-number">3.</span> <span class="toc-text">代码实现</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/11/最小生成树-学习报告/" class="archive-article-date">
-  	<time datetime="2019-02-11T10:46:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-11</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/11/最小生成树-学习报告/">最小生成树 学习报告</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习报告</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MST</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Kruskal</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/10/扩展欧几里得算法/" class="archive-article-date">
-  	<time datetime="2019-02-10T11:54:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/10/扩展欧几里得算法/">扩展欧几里得 学习报告</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习报告</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">exgcd</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/10/To Do List/" class="archive-article-date">
-  	<time datetime="2019-02-10T09:01:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/10/To Do List/">To Do List</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">复习计划</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习计划</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/01/2019寒假成都摸鱼记/" class="archive-article-date">
-  	<time datetime="2019-02-01T11:38:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/01/2019寒假成都摸鱼记/">2019寒假成都摸鱼记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">游记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/24/海底高铁/" class="archive-article-date">
-  	<time datetime="2019-01-24T11:28:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/24/海底高铁/">Luogu P3406 海底高铁 解题报告</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">解题报告</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">前缀和</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">差分</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/24/贪心策略-学习报告/" class="archive-article-date">
-  	<time datetime="2019-01-24T04:01:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/24/贪心策略-学习报告/">贪心策略 学习报告</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习报告</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贪心</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/19/疯狂的采药/" class="archive-article-date">
-  	<time datetime="2019-01-19T05:14:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/19/疯狂的采药/">Luogu P1616 疯狂的采药 解题报告</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">解题报告</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">线性DP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/19/小闹钟/" class="archive-article-date">
-  	<time datetime="2019-01-19T04:58:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/19/小闹钟/">小闹钟</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2019/">&laquo; Prev</a><a class="page-number" href="/archives/2019/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
+
+
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: '236827e23a5ecfc3da18',
+  	clientSecret: '5ac7771c2376137b31f36998fb51d7944403ad5b',
+  	repo: 'zgjjj.github.io',
+  	owner: 'zgjjj',
+  	admin: ['zgjjj'],
+  	id: 'Thu Mar 21 2019 16:20:26 GMT+0800',
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container') 
+}
+</script>
+  
           </div>
         </div>
       </div>
@@ -623,8 +365,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
