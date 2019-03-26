@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="zgjjj的博客">
 <meta property="og:description" content="题目描述题目背景嘤嘤嘤,zgjjj又荒废whk推一些奇奇怪怪的东西了 题目描述给定一个随机数生成函数： $$rand(x,y)​$$ 等概率返回区间$[x,y]​$中的一个整数值。 给定函数$f(x) = rand(x,f(x + k))​$ zgjjj想知道$f(1)​$的期望值 输入输出格式输入格式：第一行，一个整数T$(T\le 20000)$,表示数据组数 下面的T+1行，每行一个整数k，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-26T08:14:29.409Z">
+<meta property="og:updated_time" content="2019-03-26T08:16:42.187Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="概中概 题解">
 <meta name="twitter:description" content="题目描述题目背景嘤嘤嘤,zgjjj又荒废whk推一些奇奇怪怪的东西了 题目描述给定一个随机数生成函数： $$rand(x,y)​$$ 等概率返回区间$[x,y]​$中的一个整数值。 给定函数$f(x) = rand(x,f(x + k))​$ zgjjj想知道$f(1)​$的期望值 输入输出格式输入格式：第一行，一个整数T$(T\le 20000)$,表示数据组数 下面的T+1行，每行一个整数k，">
@@ -224,7 +224,7 @@
 </tbody>
 </table>
 <p>很清晰了吧？</p>
-<p>对于第$$m$$层迭代，我们有：<br>$$\forall j \in [m-k,m],P(j) = \sum\limits_{m\leq i\leq m+k}{P(i)}$$</p>
+<p>对于第$m$层迭代，我们有：<br>$$\forall j \in [m-k,m],P(j) = \sum\limits_{m\leq i\leq m+k}{P(i)}$$</p>
 <p>由此可以推出：</p>
 <p>$$P(i) = \frac{1}{(1+k)^{\lceil\frac{i}{k}\rceil}} = (1+k)^{\lfloor\frac{-i}{k}\rfloor}$$</p>
 <p>根据<strong>数学期望的定义</strong>:<br>$$E(i) = i\times(1+k)^{\lfloor{\frac{-i}{k}}\rfloor}$$</p>
