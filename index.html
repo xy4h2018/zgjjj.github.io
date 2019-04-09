@@ -262,6 +262,116 @@ gitalk.render('gitalk-container')
 </script>
   
   
+    <article id="post-Trie与01树-学习报告" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/09/Trie与01树-学习报告/">Trie与01树 学习报告</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/09/Trie与01树-学习报告/" class="archive-article-date">
+  	<time datetime="2019-04-09T09:33:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>借着<a href="http://hboj.icu/problem/1064" target="_blank" rel="noopener">异或粽子</a>的契机学了一下<strong>Trie</strong>(<del>zgjjj:原来这玩意不止能搞字符串</del>)</p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Trie，字典树，显而易见是一个数据结构。它是解决字符串问题<del><a href="http://hboj.icu/problem/1065" target="_blank" rel="noopener">不是这个</a></del>的有力工具。</p>
+<p>它的衍生物<strong>01树</strong>则可以很方便的处理<strong>异或和最大</strong>问题。</p>
+<h1 id="Trie"><a href="#Trie" class="headerlink" title="Trie"></a>Trie</h1><p>这玩意很奇怪，不同于其他常见的数据结构，它的节点信息保存在数组下标中。</p>
+<p>举个例子：<code>trie[p][ch - &#39;a&#39;] != 0</code>代表字符<code>ch</code>存在于字典树，p是什么我们待会看。</p>
+<h2 id="插入字符串"><a href="#插入字符串" class="headerlink" title="插入字符串"></a>插入字符串</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">ins</span><span class="params">(<span class="keyword">char</span> *s)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; s[i]; i++) &#123;</span><br><span class="line">		<span class="keyword">char</span> ch = s[i] - <span class="string">'a'</span>;</span><br><span class="line">		<span class="keyword">if</span>(trie[p][ch] == <span class="number">0</span>) trie[p][ch] = ++tot;</span><br><span class="line">		p = trie[p][ch];</span><br><span class="line">	&#125;</span><br><span class="line">    end[p] = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的p就是当前节点的编号， tot存储的则是子节点之一的编号。</p>
+<p><code>end[p]</code>记录当前字符串是否结束，若<strong>不维护</strong>则树上串的前缀会被错误的判为存在。</p>
+<h2 id="查询字符串是否存在"><a href="#查询字符串是否存在" class="headerlink" title="查询字符串是否存在"></a>查询字符串是否存在</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">char</span> *s)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; s[i]; i++) &#123;</span><br><span class="line">		<span class="keyword">char</span> ch = s[i] - <span class="string">'a'</span>;</span><br><span class="line">		p = trie[p][ch];</span><br><span class="line">		<span class="keyword">if</span>(p == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> end[p];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意判断该串是否完结。</p>
+<h1 id="01树"><a href="#01树" class="headerlink" title="01树"></a>01树</h1><h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>和<code>Trie</code>相似，但是<strong>01串的节点信息只有0和1</strong></p>
+<p>我们将一个数进行<strong>二进制划分</strong>，从大到小考虑每一位，依次插入字典树，那么在寻找与已知串异或和最大的串，只需<strong>贪心</strong>地找与当前位<strong>相反</strong>的节点。</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><a href="https://www.luogu.org/problemnew/show/P4551" target="_blank" rel="noopener"><strong>P4551</strong> 最长异或路径</a></p>
+<p>树上统计，需要先<strong>dfs</strong>出到每个节点的异或和，然后将权值插入<strong>01树</strong>。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::max;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">300010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M = N &lt;&lt; <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> head[N], ver[M], edge[M], nxt[M];</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>, tot = <span class="number">0</span>, p;</span><br><span class="line"><span class="keyword">int</span> trie[N * <span class="number">31</span>][<span class="number">2</span>], d[N], ans, n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> z)</span> </span>&#123;</span><br><span class="line">	ver[++cnt] = y, edge[cnt] = z, nxt[cnt] = head[x], head[x] = cnt;</span><br><span class="line">	ver[++cnt] = x, edge[cnt] = z, nxt[cnt] = head[y], head[y] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">ins</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span> &lt;&lt; <span class="number">30</span>; i; i &gt;&gt;= <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">bool</span> ch = x &amp; i;</span><br><span class="line">		<span class="keyword">if</span>(!trie[p][ch]) trie[p][ch] = ++tot;</span><br><span class="line">		p = trie[p][ch];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span> &lt;&lt; <span class="number">30</span>; i; i &gt;&gt;= <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">bool</span> ch = x &amp; i;</span><br><span class="line">		<span class="keyword">if</span>(trie[p][ch ^ <span class="number">1</span>]) ans += i, p = trie[p][ch ^ <span class="number">1</span>];</span><br><span class="line">		<span class="keyword">else</span> p = trie[p][ch];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> fa)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = head[x]; i; i = nxt[i]) &#123;</span><br><span class="line">		<span class="keyword">int</span> y = ver[i], z = edge[i];</span><br><span class="line">		<span class="keyword">if</span>(y != fa) &#123;</span><br><span class="line">			d[y] = d[x] ^ z;</span><br><span class="line">			dfs(y, x);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> x, y, z;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;x, &amp;y, &amp;z);</span><br><span class="line">		add(x, y, z);</span><br><span class="line">	&#125;</span><br><span class="line">	dfs(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		ins(d[i], p);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		ans = max(ans, query(d[i], p));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>, ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习报告</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Trie</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: '236827e23a5ecfc3da18',
+  	clientSecret: '5ac7771c2376137b31f36998fb51d7944403ad5b',
+  	repo: 'zgjjj.github.io',
+  	owner: 'zgjjj',
+  	admin: ['zgjjj'],
+  	id: '',
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container') 
+}
+</script>
+  
+  
     <article id="post-图论模板" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -1136,108 +1246,6 @@ gitalk.render('gitalk-container')
 </script>
   
   
-    <article id="post-位运算与二进制状态压缩-学习报告" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/26/位运算与二进制状态压缩-学习报告/">位运算与二进制状态压缩 学习报告</a>
-    </h1>
-  
-
-        
-        <a href="/2019/02/26/位运算与二进制状态压缩-学习报告/" class="archive-article-date">
-  	<time datetime="2019-02-26T08:22:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在计算机中，数据都使用二进制存储与操作。因此，学习位运算不仅可以优化我们的程序<del>（使可读性–）</del>，还可以帮助我们理解程序运行中的种种表现，帮助我们更好的DEBUG<del>（卡常）</del></p>
-        
-          <a class="article-more-a" href="/2019/02/26/位运算与二进制状态压缩-学习报告/#more">打开新世界的大门！ >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习报告</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">位运算</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">状压</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-
-if(true){
-	var gitalk = new Gitalk({
-  	clientID: '236827e23a5ecfc3da18',
-  	clientSecret: '5ac7771c2376137b31f36998fb51d7944403ad5b',
-  	repo: 'zgjjj.github.io',
-  	owner: 'zgjjj',
-  	admin: ['zgjjj'],
-  	id: '',
-  	distractionFreeMode: 'true'
-})
-gitalk.render('gitalk-container') 
-}
-</script>
-  
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1509,6 +1517,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LCA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Trie</a>
               </li>
             
             <div class="clearfix"></div>
