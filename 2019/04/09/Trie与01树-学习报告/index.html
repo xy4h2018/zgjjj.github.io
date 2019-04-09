@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://zgjjj.github.io">
   <title>Trie与01树 学习报告 | zgjjj的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="借着异或粽子的契机学了一下Trie(zgjjj:原来这玩意不止能搞字符串) 概述Trie，字典树，显而易见是一个数据结构。它是解决字符串问题不是这个的有力工具。 它的衍生物01树则可以很方便的处理异或和最大问题。 Trie这玩意很奇怪，不同于其他常见的数据结构，它的节点信息保存在数组下标中。 举个例子：trie[p][ch - &amp;#39;a&amp;#39;] != 0代表字符ch存在于字典树，p是什么我">
+  <meta name="description" content="借着异或粽子的契机学了一下Trie(zgjjj:原来这玩意不止能搞字符串)">
 <meta name="keywords" content="学习报告,Trie">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Trie与01树 学习报告">
 <meta property="og:url" content="http://zgjjj.github.io/2019/04/09/Trie与01树-学习报告/index.html">
 <meta property="og:site_name" content="zgjjj的博客">
-<meta property="og:description" content="借着异或粽子的契机学了一下Trie(zgjjj:原来这玩意不止能搞字符串) 概述Trie，字典树，显而易见是一个数据结构。它是解决字符串问题不是这个的有力工具。 它的衍生物01树则可以很方便的处理异或和最大问题。 Trie这玩意很奇怪，不同于其他常见的数据结构，它的节点信息保存在数组下标中。 举个例子：trie[p][ch - &amp;#39;a&amp;#39;] != 0代表字符ch存在于字典树，p是什么我">
+<meta property="og:description" content="借着异或粽子的契机学了一下Trie(zgjjj:原来这玩意不止能搞字符串)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-09T09:54:28.171Z">
+<meta property="og:updated_time" content="2019-04-09T10:10:05.769Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Trie与01树 学习报告">
-<meta name="twitter:description" content="借着异或粽子的契机学了一下Trie(zgjjj:原来这玩意不止能搞字符串) 概述Trie，字典树，显而易见是一个数据结构。它是解决字符串问题不是这个的有力工具。 它的衍生物01树则可以很方便的处理异或和最大问题。 Trie这玩意很奇怪，不同于其他常见的数据结构，它的节点信息保存在数组下标中。 举个例子：trie[p][ch - &amp;#39;a&amp;#39;] != 0代表字符ch存在于字典树，p是什么我">
+<meta name="twitter:description" content="借着异或粽子的契机学了一下Trie(zgjjj:原来这玩意不止能搞字符串)">
   
     <link rel="alternative" href="/atom.xml" title="zgjjj的博客" type="application/atom+xml">
   
@@ -180,6 +180,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>借着<a href="http://hboj.icu/problem/1064" target="_blank" rel="noopener">异或粽子</a>的契机学了一下<strong>Trie</strong>(<del>zgjjj:原来这玩意不止能搞字符串</del>)</p>
+<a id="more"></a>
 <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Trie，字典树，显而易见是一个数据结构。它是解决字符串问题<del><a href="http://hboj.icu/problem/1065" target="_blank" rel="noopener">不是这个</a></del>的有力工具。</p>
 <p>它的衍生物<strong>01树</strong>则可以很方便的处理<strong>异或和最大</strong>问题。</p>
 <h1 id="Trie"><a href="#Trie" class="headerlink" title="Trie"></a>Trie</h1><p>这玩意很奇怪，不同于其他常见的数据结构，它的节点信息保存在数组下标中。</p>
